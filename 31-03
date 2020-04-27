@@ -1,0 +1,37 @@
+Web
+ - Login
+ - Upload de video (depois)
+ - Lista de Usuário
+ - Criação de Usuário
+ - Lista de atividades
+ - Atrbuição de Atividades aos usuários
+
+App
+ - Login
+ - Enviar o login e senha por email
+ - Vizualização de atividade
+ - Download de video (depois)
+
+Usuário
+ - login
+ - senha
+ - ativo
+
+Exercício
+ - Nome 
+ - Descrição
+ - Video
+
+Treino
+ - Data
+ - Usuario
+ - Intensidade
+ - Repetições
+ - Quantidade de vezes
+ - Exercicio
+
+- Abrir o treino do dia apenas uma vez
+- Abrir apenas o treino do dia ou do dia anterior
+- Permitir fazer o treino após a data, sem sobrepor o da data atual
+- Alterar senha no primeiro acesso
+- 
