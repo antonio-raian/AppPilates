@@ -16,7 +16,7 @@ import {
   ContainerButtons,
   NameUser,
 } from './style';
-import {Dimensions} from 'react-native';
+import {Dimensions, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import moment from 'moment';
 import ptBR from 'moment/locale/pt-br';
@@ -64,31 +64,32 @@ const Home = ({navigation}) => {
     <>
       <Provider>
         <Background>
-          <Menu
-            visible={menuOpen}
-            onDismiss={() => setMenuOpen(false)}
-            anchor={
-              <MenuButton onPress={() => setMenuOpen(true)}>
-                <Icon name="user" size={25} color="#fff" />
-                <NameUser> Olá, Antonio</NameUser>
-              </MenuButton>
-            }
-            style={{borderColor: '#000', borderWidth: '3px'}}>
-            <Menu.Item
-              title="Sair"
-              onPress={() => {
-                setMenuOpen(false);
-                logout().then((res) => {
-                  navigation.dispatch(
-                    CommonActions.reset({
-                      index: 1,
-                      routes: [{name: 'Auth'}],
-                    }),
-                  );
-                });
-              }}
-            />
-          </Menu>
+          <View style={{width: '30%'}}>
+            <Menu
+              visible={menuOpen}
+              onDismiss={() => setMenuOpen(false)}
+              anchor={
+                <MenuButton onPress={() => setMenuOpen(true)}>
+                  <Icon name="user" size={25} color="#fff" />
+                  <NameUser>Antonio Raian</NameUser>
+                </MenuButton>
+              }>
+              <Menu.Item
+                title="Sair"
+                onPress={() => {
+                  setMenuOpen(false);
+                  logout().then((res) => {
+                    navigation.dispatch(
+                      CommonActions.reset({
+                        index: 1,
+                        routes: [{name: 'Auth'}],
+                      }),
+                    );
+                  });
+                }}
+              />
+            </Menu>
+          </View>
           <TitleHeader>Treino Diário</TitleHeader>
           <Logo source={require('../../Assets/logo.png')} />
         </Background>

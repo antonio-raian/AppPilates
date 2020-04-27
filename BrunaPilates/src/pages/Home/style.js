@@ -42,11 +42,10 @@ export const Scrolled = styled.ScrollView.attrs({
 export const MenuButton = styled.TouchableOpacity`
   flexDirection: row
   alignItems: center
-  width: 65%
+  paddingLeft: 10px
+  width: 100%
   height: 100%
   justifyContent: center
-  borderColor: #000
-  borderWidth: 3px
 `;
 
 export const ListButton = styled.TouchableOpacity`
@@ -64,14 +63,13 @@ export const Background = styled(LinearGradient).attrs({
 })`
   flexDirection: row
   alignItems: center
+  justifyContent: center
   height: 7%
 `;
 
 export const TitleHeader = styled.Text`
   color: #fff
-  borderColor: #000
-  borderWidth: 3px
-  width: 50%
+  width: 45%
   textAlign: center
   fontSize: 20px
   fontWeight: bold
@@ -79,9 +77,9 @@ export const TitleHeader = styled.Text`
 
 export const NameUser = styled.Text`
   color: #fff
-  width: 100%
-  borderColor: #000
-  borderWidth: 3px
+  width: 90%
+  textAlign: center
+  paddingLeft: 5px
 `;
 
 export const Lista = styled.View`
