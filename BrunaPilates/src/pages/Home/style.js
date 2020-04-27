@@ -61,15 +61,36 @@ export const ListButton = styled.TouchableOpacity`
 export const Background = styled(LinearGradient).attrs({
   colors: [primaryColor, secondaryColor],
 })`
-  flexDirection: row
-  alignItems: center
   justifyContent: center
-  height: 7%
+  height: 12%
+  flexDirection: row
+`;
+export const BoxRight = styled.View`
+  width: 40%
+  borderRightColor: #fff
+  borderRightWidth: 1px
+`;
+export const BoxLeft = styled.View`
+width: 60%
+height: 100%
+flexDirection: row
+`;
+
+export const BoxTitle = styled.View`
+  width: 75%
+  paddingHorizontal: 10px
+  height: 100%
+  flexDirection: row
+  alignItems:center
+`;
+export const BoxLogo = styled.View`
+  width: 25%
+  height: 100%
 `;
 
 export const TitleHeader = styled.Text`
   color: #fff
-  width: 45%
+  width: 85%
   textAlign: center
   fontSize: 20px
   fontWeight: bold
@@ -109,8 +130,8 @@ export const LabelButtonInit = styled.Text`
 `;
 
 export const Logo = styled.Image.attrs({tintColor: '#fff'})`
-  width: 20%
-  height: 100%
+  width: 100%
+  height: 55%
 `;
 
 //Renderização do conteudo do acordion

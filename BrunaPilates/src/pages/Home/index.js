@@ -5,16 +5,17 @@ import {
   Background,
   TitleHeader,
   Lista,
-  Button,
-  LabelButtonInit,
   Title,
-  SubTitle,
   Scrolled,
-  Center,
   Logo,
   ListButton,
   ContainerButtons,
   NameUser,
+  BoxIcon,
+  BoxTitle,
+  BoxLogo,
+  BoxRight,
+  BoxLeft,
 } from './style';
 import {Dimensions, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -51,7 +52,8 @@ const Home = ({navigation}) => {
             past={moment().diff(d.data_treino, 'h') > 0 && !today}
             forward={moment().diff(d.data_treino, 'h') < 0}
             disabled={d.realizado || !today}
-            today={today}>
+            today={today}
+            onPress={() => navigation.navigate('Activity', {activity: d})}>
             <Title>{`Treino dia ${moment(d.data_treino).format(
               'DD MMM YYYY',
             )}`}</Title>
@@ -64,13 +66,13 @@ const Home = ({navigation}) => {
     <>
       <Provider>
         <Background>
-          <View style={{width: '30%'}}>
+          <BoxRight>
             <Menu
               visible={menuOpen}
               onDismiss={() => setMenuOpen(false)}
               anchor={
                 <MenuButton onPress={() => setMenuOpen(true)}>
-                  <Icon name="user" size={25} color="#fff" />
+                  <Icon name="user" size={30} color="#fff" />
                   <NameUser>Antonio Raian</NameUser>
                 </MenuButton>
               }>
@@ -89,9 +91,16 @@ const Home = ({navigation}) => {
                 }}
               />
             </Menu>
-          </View>
-          <TitleHeader>Treino Diário</TitleHeader>
-          <Logo source={require('../../Assets/logo.png')} />
+          </BoxRight>
+          <BoxLeft>
+            <BoxTitle>
+              <Icon name="calendar" color={'#fff'} size={25} />
+              <TitleHeader>{moment().format('DD/MM/YYYY')}</TitleHeader>
+            </BoxTitle>
+            <BoxLogo>
+              <Logo source={require('../../Assets/logo.png')} />
+            </BoxLogo>
+          </BoxLeft>
         </Background>
         <Container>
           <Scrolled
