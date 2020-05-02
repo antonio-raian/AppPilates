@@ -19,9 +19,9 @@ export const Container = styled.ImageBackground.attrs({
 
 export const ContainerButtons = styled.View`
   width: 370px
-  height: 90px
+  height: ${(props) => (props.today ? '180px' : '90px')}
   padding: 7px
-  justify-content: center
+  justifyContent: center
   alignItems: center
 `;
 
@@ -49,16 +49,17 @@ export const MenuButton = styled.TouchableOpacity`
 `;
 
 export const ListButton = styled.TouchableOpacity`
-  width: ${(props) => (props.today ? '100%' : '85%')}
+  width: 100%
+  height: 100%
   background-color: ${(props) =>
     props.past ? '#606060' : props.forward ? secondaryColor : primaryColor}
   justifyContent: center
   alignItems: center
   borderRadius: 50px
-  padding: 10px;
+  padding: 10px
 `;
 
-export const Background = styled(LinearGradient).attrs({
+export const HeadBackground = styled(LinearGradient).attrs({
   colors: [primaryColor, secondaryColor],
 })`
   justifyContent: center
@@ -163,3 +164,8 @@ export const Content = styled.Text`
   paddingHorizontal: 10px
   fontSize: 15px
 `;
+
+export const Loading = styled.ActivityIndicator.attrs({
+  color: primaryColor,
+  size: 100,
+})``;

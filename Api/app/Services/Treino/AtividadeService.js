@@ -25,17 +25,20 @@ class AtividadeService {
           return await Atividade.query()
             .where("data_treino", busca.data_treino)
             .andWhere("usuario_id", busca.usuario_id)
+            .orderBy("data_treino")
             .with("treinos.exercicio")
             .fetch();
         }
         return await Atividade.query()
           .where("data_treino", busca.data_treino)
+          .orderBy("data_treino")
           .with("treinos.exercicio")
           .fetch();
       }
       if (busca.usuario_id) {
         return await Atividade.query()
           .where("usuario_id", busca.usuario_id)
+          .orderBy("data_treino")
           .with("treinos.exercicio")
           .fetch();
       }
@@ -43,6 +46,7 @@ class AtividadeService {
     return await Atividade.query()
       .with("usuario")
       .with("treinos.exercicio")
+      .orderBy("data_treino")
       .fetch();
   }
 
@@ -66,6 +70,8 @@ class AtividadeService {
     atividade.data_realizado =
       novaAtividade.data_realizado || atividade.data_realizado;
     atividade.realizado = novaAtividade.realizado || atividade.realizado;
+    atividade.dificuldade_sentida = novaAtividade.dificuldade_sentida || atividade.dificuldade_sentida;
+    atividade.comentario = novaAtividade.comentario || atividade.comentario;
 
     return await atividade.save();
   }

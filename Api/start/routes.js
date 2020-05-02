@@ -30,12 +30,14 @@ Route.group("categoria", () => {
 // .middleware(["auth"]);
 
 Route.group("usuario", () => {
-  Route.post("/login", "Usuario/UsuarioController.login");
   Route.post("/novo", "Usuario/UsuarioController.create");
   Route.post("/busca", "Usuario/UsuarioController.read");
   Route.post("/altera", "Usuario/UsuarioController.update");
-}).prefix("/usuario");
-// .middleware(["auth"]);
+})
+  .prefix("/usuario")
+  .middleware(["auth"]);
+
+Route.post("/usuario/login", "Usuario/UsuarioController.login");
 
 //Treinos
 Route.group("exercicio", () => {

@@ -34,8 +34,8 @@ export const BoxTitle = styled.View`
  justifyContent: center
 `;
 export const BoxLogo = styled.View`
-width: 100%
-height: 30%
+width: 75%
+height: 100%
 alignItems: flex-end
 `;
 
@@ -56,7 +56,7 @@ fontWeight: bold
 `;
 
 export const Logo = styled.Image.attrs({tintColor: '#fff'})`
-  width: 15%
+  width: 20%
   height: 100%
 `;
 
@@ -98,4 +98,46 @@ export const Instuctions = styled.Text`
   textAlign: center
   fontSize: 15px
   fontWeight: bold
+`;
+
+//Botão finalizar
+export const BoxBtnEnd = styled.View`
+  width: 100%
+  height: 12%
+  alignItems: center
+`;
+
+export const ButtonEnd = styled.TouchableOpacity`
+  padding: 10px
+  width: 95%
+  height: 100%
+  alignItems: center
+  justifyContent: center
+  borderRadius: 50px
+  background-color: #99FF99
+`;
+
+export const LabelBtnEnd = styled.Text`
+  textAlign: center
+  fontSize: 25px
+  fontWeight: bold
+`;
+
+//Botão Voltar
+export const BoxBtnBack = styled.View`
+  width: 100%
+  height: 25%
+  flexDirection: row
+`;
+export const ButtonBack = styled.TouchableOpacity`
+  width: 25%
+  justifyContent: center
+  alignItems: center
+  flexDirection: row
+`;
+
+export const LabelBtnBack = styled.Text`
+  color: #fff
+  fontWeight: bold
+  fontSize: 20px
 `;

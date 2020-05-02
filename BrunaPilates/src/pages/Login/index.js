@@ -11,26 +11,39 @@ import {
 } from './style';
 import AsyncStorage from '@react-native-community/async-storage';
 import {CommonActions} from '@react-navigation/native';
-import {KeyboardAvoidingView} from 'react-native';
+import {Alert} from 'react-native';
+import api from '../../utils/api';
 
 const Login = ({navigation}) => {
-  const [user, setUser] = useState('');
-  const [passworld, setPassworld] = useState('');
+  const [user, setUser] = useState('admin');
+  const [password, setPassworld] = useState('admin123');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function _getUser() {
       const user = await AsyncStorage.getItem('user');
-      const passwd = await AsyncStorage.getItem('passworld');
+      const passwd = await AsyncStorage.getItem('password');
       setUser(user || '');
       setPassworld(passwd || '');
     }
-    _getUser();
+    // _getUser();
   }, []);
 
   const handleSubmit = async () => {
-    await AsyncStorage.setItem('token', 'aoishoaihsoaihsoaihs');
-    navigation.dispatch(
+    if (user === '' || password === '') {
+      return Alert.alert('Prencha os campos');
+    }
+
+    await api
+      .post('/usuario/login', {username: user, password})
+      .then(async (res) => {
+        const usuario = res.data;
+        await AsyncStorage.setItem('user', JSON.stringify(usuario.usuario));
+        await AsyncStorage.setItem('token', usuario.token.token);
+        console.log(res.data);
+      })
+      .catch((err) => console.log('Erro Login', err));
+    await navigation.dispatch(
       CommonActions.reset({
         index: 1,
         routes: [{name: 'Auth'}],
@@ -45,10 +58,12 @@ const Login = ({navigation}) => {
         <Form>
           <Input
             placeholder="Usuário..."
+            value={user}
             onChangeText={(text) => setUser(text)}
           />
           <Input
             placeholder="Senha..."
+            value={password}
             secureTextEntry
             onChangeText={(text) => setPassworld(text)}
           />
