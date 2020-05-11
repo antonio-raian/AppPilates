@@ -1,17 +1,17 @@
 "use strict";
 
-const AvaliacaoService = use("App/Services/Treino/AvaliacaoService");
+const AtividadeService = use("App/Services/Treino/AtividadeService");
 
 class TreinoController {
   async create({ request }) {
     const treino = request.all();
 
-    return await AvaliacaoService.create(treino);
+    return await AtividadeService.update(treino);
   }
   async read({ request }) {
     const { busca } = request.all();
 
-    return await AvaliacaoService.read(busca);
+    return await AtividadeService.read(busca);
   }
 }
 

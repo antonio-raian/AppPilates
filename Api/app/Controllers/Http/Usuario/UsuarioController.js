@@ -5,13 +5,12 @@ const UsuarioService = use("App/Services/Usuario/UsuarioService");
 class UsuarioController {
   async login({ request, auth }) {
     const { username, password } = request.all();
+    console.log("Login Request", request.all());
     const token = await auth.attempt(username, password);
 
     const usuario = (await UsuarioService.read(username)).toJSON()[0];
     return {
-      username: usuario.username,
-      situacao: usuario.situacao,
-      categoria: usuario.categoria,
+      usuario,
       token,
     };
   }

@@ -34,6 +34,7 @@ export const Background = styled.ImageBackground.attrs({
 
 export const Input = styled.TextInput.attrs({
   placeholderTextColor: '#6b6b6b',
+  autoCapitalize: 'none',
 })`
   marginTop: 10px
   borderRadius: 50px

@@ -19,9 +19,9 @@ export const Container = styled.ImageBackground.attrs({
 
 export const ContainerButtons = styled.View`
   width: 370px
-  height: 90px
+  height: ${(props) => (props.today ? '180px' : '90px')}
   padding: 7px
-  justify-content: center
+  justifyContent: center
   alignItems: center
 `;
 
@@ -42,36 +42,56 @@ export const Scrolled = styled.ScrollView.attrs({
 export const MenuButton = styled.TouchableOpacity`
   flexDirection: row
   alignItems: center
-  width: 65%
+  paddingLeft: 10px
+  width: 100%
   height: 100%
   justifyContent: center
-  borderColor: #000
-  borderWidth: 3px
 `;
 
 export const ListButton = styled.TouchableOpacity`
-  width: ${(props) => (props.today ? '100%' : '85%')}
+  width: 100%
+  height: 100%
   background-color: ${(props) =>
     props.past ? '#606060' : props.forward ? secondaryColor : primaryColor}
   justifyContent: center
   alignItems: center
   borderRadius: 50px
-  padding: 10px;
+  padding: 10px
 `;
 
-export const Background = styled(LinearGradient).attrs({
+export const HeadBackground = styled(LinearGradient).attrs({
   colors: [primaryColor, secondaryColor],
 })`
+  justifyContent: center
+  height: 12%
   flexDirection: row
-  alignItems: center
-  height: 7%
+`;
+export const BoxRight = styled.View`
+  width: 40%
+  borderRightColor: #fff
+  borderRightWidth: 1px
+`;
+export const BoxLeft = styled.View`
+width: 60%
+height: 100%
+flexDirection: row
+`;
+
+export const BoxTitle = styled.View`
+  width: 75%
+  paddingHorizontal: 10px
+  height: 100%
+  flexDirection: row
+  alignItems:center
+`;
+export const BoxLogo = styled.View`
+  width: 25%
+  height: 100%
 `;
 
 export const TitleHeader = styled.Text`
   color: #fff
-  borderColor: #000
-  borderWidth: 3px
-  width: 50%
+  width: 85%
   textAlign: center
   fontSize: 20px
   fontWeight: bold
@@ -79,9 +99,9 @@ export const TitleHeader = styled.Text`
 
 export const NameUser = styled.Text`
   color: #fff
-  width: 100%
-  borderColor: #000
-  borderWidth: 3px
+  width: 90%
+  textAlign: center
+  paddingLeft: 5px
 `;
 
 export const Lista = styled.View`
@@ -111,8 +131,8 @@ export const LabelButtonInit = styled.Text`
 `;
 
 export const Logo = styled.Image.attrs({tintColor: '#fff'})`
-  width: 20%
-  height: 100%
+  width: 100%
+  height: 55%
 `;
 
 //Renderização do conteudo do acordion
@@ -144,3 +164,8 @@ export const Content = styled.Text`
   paddingHorizontal: 10px
   fontSize: 15px
 `;
+
+export const Loading = styled.ActivityIndicator.attrs({
+  color: primaryColor,
+  size: 100,
+})``;
