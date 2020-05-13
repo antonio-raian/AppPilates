@@ -5,8 +5,10 @@ import { AuthContext } from "./context/auth";
 
 import maTheme from "./theme";
 import { ThemeProvider } from "styled-components";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
-import { StylesProvider } from "@material-ui/styles";
+import {
+  StylesProvider,
+  ThemeProvider as MuiThemeProvider,
+} from "@material-ui/styles";
 import Routes from "./routes/Routes";
 
 function App() {

@@ -23,19 +23,20 @@ export const get = async (route) => {
       return false;
     });
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
 export const remove = async (route, obj) => {
-  try {
-    return await api.delete(route, { data: obj }).then((res) => {
+  return await api
+    .delete(route, { data: obj })
+    .then((res) => {
       if (res.data) {
         return true;
       }
       return false;
+    })
+    .catch((err) => {
+      throw err;
     });
-  } catch (err) {
-    return false;
-  }
 };

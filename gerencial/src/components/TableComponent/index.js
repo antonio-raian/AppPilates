@@ -37,15 +37,7 @@ const tableIcons = {
 };
 
 const TableComponent = (props) => {
-  const {
-    title,
-    columns,
-    data,
-    actions,
-    handleDetails,
-    handleEdit,
-    handleDelete,
-  } = props;
+  const { title, columns, data, actions, handleDetails, top } = props;
 
   return (
     <MaterialTable
@@ -62,6 +54,7 @@ const TableComponent = (props) => {
         actionsColumnIndex: -1,
         sorting: true,
         defaultSort: "desc",
+        toolbar: top,
       }}
       localization={{
         body: { emptyDataSourceMessage: "Não há dados para exibir!" },

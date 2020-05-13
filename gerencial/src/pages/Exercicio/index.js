@@ -18,9 +18,9 @@ const colunas = [
   { title: "Criado em", field: "data" },
 ];
 const Exercicio = () => {
-  const [modalNovo, setModalNovo] = useState("");
-  const [modalAtualizar, setModalAtualizar] = useState("");
-  const [modalDeletar, setModalDeletar] = useState("");
+  const [modalNovo, setModalNovo] = useState(false);
+  const [modalAtualizar, setModalAtualizar] = useState(false);
+  const [modalDeletar, setModalDeletar] = useState(false);
 
   const [exercicios, setExercicios] = useState([]);
   const [exerUpload, setExerUpload] = useState({});
@@ -87,6 +87,7 @@ const Exercicio = () => {
         <Grid container style={{}}>
           <Grid item xs={12} md={12} lg={12}>
             <TableComponent
+              top={true}
               title={
                 <Grid container>
                   <Grid item>

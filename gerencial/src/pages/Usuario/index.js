@@ -17,9 +17,9 @@ const colunas = [
 ];
 
 const Usuario = () => {
-  const [modalNovo, setModalNovo] = useState("");
-  const [modalAtualizar, setModalAtualizar] = useState("");
-  const [modalDeletar, setModalDeletar] = useState("");
+  const [modalNovo, setModalNovo] = useState(false);
+  const [modalAtualizar, setModalAtualizar] = useState(false);
+  const [modalDeletar, setModalDeletar] = useState(false);
 
   const [usuarios, setUsuarios] = useState([]);
   const [userUpload, setUserUpload] = useState({});
@@ -70,6 +70,7 @@ const Usuario = () => {
         <Grid container style={{}}>
           <Grid item xs={12} md={12} lg={12}>
             <TableComponent
+              top={true}
               title={
                 <Grid container>
                   <Grid item>
