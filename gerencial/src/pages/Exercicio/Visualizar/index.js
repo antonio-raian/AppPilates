@@ -27,20 +27,24 @@ const Visualizar = (props) => {
             />
           </Box>
         </Grid>
-        <Grid item>
-          <Box mt={4}>
+        <Grid container direction="row">
+          <Box mt={2}>
             <Typography variant="h5">Vídeo: </Typography>
           </Box>
           <Box mt={2}>
-            <Typography variant="h6">{link}</Typography>
+            <Typography variant="h6" style={{ paddingLeft: 15 }}>
+              {link}
+            </Typography>
           </Box>
         </Grid>
-        <Grid item>
-          <Box mt={4}>
+        <Grid container direction="row">
+          <Box mt={2}>
             <Typography variant="h5">Criado em: </Typography>
           </Box>
           <Box mt={2}>
-            <Typography variant="h6">{data}</Typography>
+            <Typography variant="h6" style={{ paddingLeft: 15 }}>
+              {data}
+            </Typography>
           </Box>
         </Grid>
       </Grid>
