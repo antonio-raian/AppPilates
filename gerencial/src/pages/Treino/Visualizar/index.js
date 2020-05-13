@@ -26,21 +26,23 @@ const Visualizar = (props) => {
             />
           </Box>
         </Grid>
-        <Grid item>
-          <Box mt={4}>
+        <Grid container directio="row">
+          <Box mt={2}>
             <Typography variant="h5">Vídeo: </Typography>
           </Box>
           <Box mt={2}>
-            <Typography variant="h6">{exercicio.link}</Typography>
+            <Typography variant="h6" style={{ paddingLeft: 10 }}>
+              {exercicio.link}
+            </Typography>
           </Box>
         </Grid>
-        <Grid item>
+        <Grid container directio="row">
           <Box mt={4}>
-            <Typography variant="h5">Como Fazer: </Typography>
+            <Typography variant="h5">O que fazer: </Typography>
           </Box>
           <Box mt={4}>
-            <Typography variant="h6">
-              São {series} séries com {repeticoes} repetições e descanso de{" "}
+            <Typography variant="h6" style={{ paddingLeft: 10 }}>
+              {series} séries com {repeticoes} repetições e descanso de{" "}
               {intervalo} segundos entre uma série e outra!
             </Typography>
           </Box>
@@ -50,7 +52,9 @@ const Visualizar = (props) => {
             <Typography variant="h5">Criado em: </Typography>
           </Box>
           <Box mt={4}>
-            <Typography variant="h6">{data}</Typography>
+            <Typography variant="h6" style={{ paddingLeft: 10 }}>
+              {data}
+            </Typography>
           </Box>
         </Grid>
       </Grid>
