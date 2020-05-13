@@ -46,7 +46,7 @@ const Novo = (props) => {
         if (res) {
           const catList = [];
           res.map((cat) => {
-            if (cat.nivel >= categoria.nivel) catList.push(cat);
+            if (cat.nivel > categoria.nivel) catList.push(cat);
           });
           setCategorias(catList);
         }

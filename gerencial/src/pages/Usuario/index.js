@@ -37,16 +37,16 @@ const Usuario = () => {
       .then((res) => {
         console.log("Resposta Busca Usuarios", res);
         const renderUser = [];
-        res.map((user) => {
-          if (user.categoria.nivel >= categoria.nivel)
+        res.map((u) => {
+          if (u.categoria.nivel >= categoria.nivel && user.id !== u.id)
             return renderUser.push({
-              id: user.id,
-              username: user.username,
-              categoria_id: user.categoria.id,
-              categorianame: user.categoria.nome,
-              categoriadesc: user.categoria.descricao,
-              situacao: user.situacao,
-              data: user.created_at,
+              id: u.id,
+              username: u.username,
+              categoria_id: u.categoria.id,
+              categorianame: u.categoria.nome,
+              categoriadesc: u.categoria.descricao,
+              situacao: u.situacao,
+              data: u.created_at,
             });
         });
         setUsuarios(renderUser);
@@ -98,7 +98,6 @@ const Usuario = () => {
                     setUserUpload(rowData);
                     setModalAtualizar(true);
                   },
-                  disabled: user.id === rowData.id,
                 }),
               ]}
               handleDetails={(obj) => (
