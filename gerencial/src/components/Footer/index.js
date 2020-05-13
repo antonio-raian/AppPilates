@@ -31,7 +31,7 @@ const ListItem = styled(MuiListItem)`
 function Footer() {
   return (
     <Wrapper>
-      <Grid container item xs={12} md={6} justify="flex-start">
+      <Grid container item md={6} justify="flex-start">
         <List>
           <ListItem>
             <ListItemText primary="Created By: Antonio Raian (raymendesjr2013@gmail.com) " />

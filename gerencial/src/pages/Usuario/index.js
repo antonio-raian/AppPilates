@@ -68,7 +68,7 @@ const Usuario = () => {
 
       <Paper square>
         <Grid container style={{}}>
-          <Grid item xs={12} md={12} lg={12}>
+          <Grid item md={12} lg={12}>
             <TableComponent
               top={true}
               title={

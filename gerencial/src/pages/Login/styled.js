@@ -9,6 +9,7 @@ export const StyPaper = styled(Paper).attrs({ elevatio: 3 })`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-width: 300px;
 `;
 
 export const BoxLogo = styled(Grid).attrs({

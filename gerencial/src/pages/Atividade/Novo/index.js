@@ -183,7 +183,7 @@ const Novo = (props) => {
                 style={{ paddingBottom: 10 }}
               >
                 <Tooltip title="Título do Treino" placement="top-start">
-                  <Grid item xs={12}>
+                  <Grid item>
                     <TextField
                       id="titulo"
                       label="Título"
@@ -321,7 +321,7 @@ const Novo = (props) => {
                       </ButtonSuccess>
                     </Grid>
                   </Tooltip>
-                  <Grid item xs={12} md={12} lg={12}>
+                  <Grid item md={12} lg={12}>
                     <TableComponent
                       columns={colunas}
                       data={showTreinos}

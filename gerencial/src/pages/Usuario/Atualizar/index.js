@@ -93,12 +93,11 @@ const Novo = (props) => {
           </Grid>
         </DialogTitle>
         <DialogContent>
-          <Grid container xs={12} alignItems="flex-end">
+          <Grid container alignItems="flex-end">
             <Grid
               container
               direction="row"
               alignItems="flex-end"
-              xs={12}
               style={{ paddingBottom: 10 }}
             >
               <Tooltip title="Nome de Usuário" placement="top-start">
@@ -186,7 +185,6 @@ const Novo = (props) => {
               container
               direction="row"
               alignItems="flex-end"
-              xs={12}
               style={{ paddingBottom: 10 }}
             >
               <Tooltip title="Senha do Usuário" placement="top-start">

@@ -84,16 +84,15 @@ const Novo = (props) => {
           </Grid>
         </DialogTitle>
         <DialogContent>
-          <Grid container xs={12}>
+          <Grid container>
             <Grid
               container
               direction="row"
               alignItems="flex-end"
-              xs={12}
               style={{ paddingBottom: 10 }}
             >
               <Tooltip title="Exercício" placement="top-start">
-                <Grid item xs={6}>
+                <Grid item>
                   <TextField
                     id="exercicio"
                     label="Exercício"
@@ -116,41 +115,36 @@ const Novo = (props) => {
                   </TextField>
                 </Grid>
               </Tooltip>
-              <Tooltip
-                title="Nº de Repetições do exercício"
-                placement="top-start"
-              >
-                <Grid item xs={6}>
-                  <TextField
-                    id="repeticoes"
-                    label="Repetições"
-                    variant="outlined"
-                    color="secondary"
-                    type="number"
-                    inputProps={{ min: 1 }}
-                    style={{ width: "95%" }}
-                    onChange={(e) => {
-                      setTreino({ ...treino, repeticoes: e.target.value });
-                      if (!treino.exercicio_id) return setError(errors[0]);
-                      if (!treino.qtd_series) return setError(errors[2]);
-                      if (!treino.intervalo) return setError(errors[3]);
-                    }}
-                  />
-                </Grid>
-              </Tooltip>
             </Grid>
-            <Grid container xs={12}>
-              <Grid
-                container
-                direction="row"
-                xs={12}
-                style={{ paddingBottom: 10 }}
-              >
+            <Grid container>
+              <Grid container direction="row" style={{ paddingBottom: 10 }}>
+                <Tooltip
+                  title="Nº de Repetições do exercício"
+                  placement="top-start"
+                >
+                  <Grid item xs={4}>
+                    <TextField
+                      id="repeticoes"
+                      label="Repetições"
+                      variant="outlined"
+                      color="secondary"
+                      type="number"
+                      inputProps={{ min: 1 }}
+                      style={{ width: "95%" }}
+                      onChange={(e) => {
+                        setTreino({ ...treino, repeticoes: e.target.value });
+                        if (!treino.exercicio_id) return setError(errors[0]);
+                        if (!treino.qtd_series) return setError(errors[2]);
+                        if (!treino.intervalo) return setError(errors[3]);
+                      }}
+                    />
+                  </Grid>
+                </Tooltip>
                 <Tooltip
                   title="Nº de Séries do exercício"
                   placement="top-start"
                 >
-                  <Grid item xs={6}>
+                  <Grid item xs={4}>
                     <TextField
                       id="qtd_series"
                       label="Séries"
@@ -172,7 +166,7 @@ const Novo = (props) => {
                   title="Tempo de descanso entre as séries em segudos"
                   placement="top-start"
                 >
-                  <Grid item xs={6}>
+                  <Grid item xs={4}>
                     <TextField
                       id="intervalo"
                       label="Intervalo"

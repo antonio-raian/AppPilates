@@ -49,7 +49,7 @@ const Login = () => {
         .catch((err) => {
           console.log("Erro no login", err.response);
           setMensErr(
-            err.response ? err.response.data.message : "Contate o suporte"
+            err.response ? err.response.data.message : "Contate o suporte" + err
           );
         });
     }
