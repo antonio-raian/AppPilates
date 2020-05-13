@@ -54,7 +54,7 @@ const Login = ({navigation}) => {
   return (
     <Background>
       <Container>
-        <Logo source={require('../../Assets/logo.png')} />
+        <Logo source={require('../../Assets/images/logoBlack.png')} />
         <Form>
           <Input
             placeholder="Usuário..."

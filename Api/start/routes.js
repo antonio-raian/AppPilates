@@ -26,8 +26,9 @@ Route.group("categoria", () => {
   Route.post("/altera", "Usuario/CategoriaController.update");
   Route.delete("/delete", "Usuario/CategoriaController.delete");
   Route.post("/usuarios", "Usuario/CategoriaController.getUsuarios");
-}).prefix("/categoria");
-// .middleware(["auth"]);
+})
+  .prefix("/categoria")
+  .middleware(["auth"]);
 
 Route.group("usuario", () => {
   Route.post("/novo", "Usuario/UsuarioController.create");

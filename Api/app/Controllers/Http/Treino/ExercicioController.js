@@ -5,6 +5,7 @@ const ExercicioService = use("App/Services/Treino/ExercicioService");
 class ExercicioController {
   async create({ request }) {
     const exercicio = request.all();
+    console.log("BODY CREATE EXERCICIO", exercicio);
 
     return await ExercicioService.create(exercicio);
   }
@@ -24,6 +25,7 @@ class ExercicioController {
   }
   async delete({ request }) {
     const exercicio = request.all();
+    console.log("BODY EXERCICIO REMOVE", exercicio);
 
     return await ExercicioService.delete(exercicio.id);
   }

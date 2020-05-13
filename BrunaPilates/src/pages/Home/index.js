@@ -93,7 +93,7 @@ const Home = ({navigation}) => {
               console.log('<><><><><', d.realizado, today);
               !d.realizado && today
                 ? navigation.navigate('Activity', {
-                    activity: d,
+                    activity: JSON.stringify(d),
                     token,
                     today: moment(),
                   })
@@ -148,14 +148,14 @@ const Home = ({navigation}) => {
               <TitleHeader>{moment().format('DD/MM/YYYY')}</TitleHeader>
             </BoxTitle>
             <BoxLogo>
-              <Logo source={require('../../Assets/logo.png')} />
+              <Logo source={require('../../Assets/images/logoBlack.png')} />
             </BoxLogo>
           </BoxLeft>
         </HeadBackground>
         <Container>
           {loading ? (
             <Center>
-              <Loading></Loading>
+              <Loading />
             </Center>
           ) : (
             <Scrolled

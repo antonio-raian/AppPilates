@@ -1,0 +1,7 @@
+// export const primaryColor = '#DF3B4F';
+// export const primaryColor = '#DA155D';
+export const primaryColor = '#EF3937';
+export const secondaryColor = '#E55238';
+export const white = '#FFFFFF';
+export const black = '#000000';
+export const gray = '#a9a9a9';

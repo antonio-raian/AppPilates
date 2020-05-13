@@ -49,7 +49,16 @@ class ExceptionHandler extends BaseExceptionHandler {
       });
     }
 
-    return super.handle(...arguments);
+    if (
+      error.message.includes("Cannot verify user password") ||
+      error.message.includes("Cannot find user with")
+    )
+      return response
+        .status(error.status)
+        .send({ message: "Usuário ou Senha incorretos" });
+
+    return response.status(error.status).send({ message: error.message });
+    // return super.handle(...arguments);
   }
 }
 

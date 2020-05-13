@@ -9,6 +9,7 @@ class CategoriaSchema extends Schema {
       table.bigIncrements();
       table.string("nome", 50).unique().notNullable();
       table.string("descricao", 200).notNullable();
+      table.integer("nivel").unique().notNullable();
       table.boolean("ativa").defaultTo(true);
       table.timestamps();
     });

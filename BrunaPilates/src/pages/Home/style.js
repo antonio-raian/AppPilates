@@ -1,16 +1,14 @@
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
+import {secondaryColor, primaryColor} from '../../utils/colors';
 
 /*
 borderColor: #000
 borderWidth: 3px
 */
 
-export const primaryColor = '#DF3B4F';
-export const secondaryColor = '#E55238';
-
 export const Container = styled.ImageBackground.attrs({
-  source: require('../../Assets/BackHome.jpg'),
+  source: require('../../Assets/images/BackHome.jpg'),
   imageStyle: {width: '100%', height: '100%'},
 })`
   flex: 1
@@ -67,7 +65,7 @@ export const HeadBackground = styled(LinearGradient).attrs({
   flexDirection: row
 `;
 export const BoxRight = styled.View`
-  width: 40%
+  width: 35%
   borderRightColor: #fff
   borderRightWidth: 1px
 `;
@@ -78,14 +76,14 @@ flexDirection: row
 `;
 
 export const BoxTitle = styled.View`
-  width: 75%
+  width: 70%
   paddingHorizontal: 10px
   height: 100%
   flexDirection: row
   alignItems:center
 `;
 export const BoxLogo = styled.View`
-  width: 25%
+  width: 30%
   height: 100%
 `;
 

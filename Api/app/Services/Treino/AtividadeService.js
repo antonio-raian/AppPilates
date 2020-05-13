@@ -12,7 +12,6 @@ class AtividadeService {
   }
 
   static async read(busca) {
-    console.log(busca);
     if (busca) {
       if (busca.id)
         return await Atividade.query()
@@ -70,7 +69,8 @@ class AtividadeService {
     atividade.data_realizado =
       novaAtividade.data_realizado || atividade.data_realizado;
     atividade.realizado = novaAtividade.realizado || atividade.realizado;
-    atividade.dificuldade_sentida = novaAtividade.dificuldade_sentida || atividade.dificuldade_sentida;
+    atividade.dificuldade_sentida =
+      novaAtividade.dificuldade_sentida || atividade.dificuldade_sentida;
     atividade.comentario = novaAtividade.comentario || atividade.comentario;
 
     return await atividade.save();

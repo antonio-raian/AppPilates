@@ -1,17 +1,15 @@
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 import {Dimensions} from 'react-native';
+import {primaryColor, secondaryColor} from '../../utils/colors';
 
 /*
 borderColor: #000
 borderWidth: 3px
 */
 
-export const primaryColor = '#DF3B4F';
-export const secondaryColor = '#E55238';
-
 export const Container = styled.ImageBackground.attrs({
-  source: require('../../Assets/BackHome.jpg'),
+  source: require('../../Assets/images/BackHome.jpg'),
   imageStyle: {width: '100%', height: '100%'},
 })`
   flex: 1

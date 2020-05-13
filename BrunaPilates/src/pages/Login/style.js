@@ -1,13 +1,11 @@
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
+import {primaryColor, gray} from '../../utils/colors';
 
 /*
 borderColor: #000
 borderWidth: 2px
 */
-
-const primaryColor = '#DA155D';
-const secondaryColor = '#a9a9a9';
 
 export const Container = styled.View`
   width: 100%
@@ -24,7 +22,7 @@ export const Form = styled.KeyboardAvoidingView.attrs({behavior: 'padding'})`
 `;
 
 export const Background = styled.ImageBackground.attrs({
-  source: require('../../Assets/background.jpg'),
+  source: require('../../Assets/images/fundo1.png'),
 })`
   flex: 1
   width: 100%
@@ -47,7 +45,7 @@ export const Input = styled.TextInput.attrs({
 `;
 
 export const Logo = styled.Image.attrs({tintColor: '#fff'})`
-  width: 55%
+  width: 60%
   height: 22%
   padding: 50px
 `;
@@ -59,7 +57,7 @@ export const Space = styled.View`
 export const Submit = styled.TouchableOpacity`
   marginTop: 10px
   borderRadius: 50px
-  background-color: ${secondaryColor}
+  background-color: ${gray}
   width: 90%
   `;
 

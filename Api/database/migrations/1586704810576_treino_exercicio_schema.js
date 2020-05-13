@@ -8,7 +8,7 @@ class ExercicioSchema extends Schema {
     this.create("exercicios", (table) => {
       table.bigIncrements();
       table.string("nome", 50).notNullable().unique();
-      table.string("descricao", 200).notNullable();
+      table.string("descricao").notNullable();
       table.string("link").notNullable();
       table.boolean("ativo").defaultTo(true);
       table.timestamps();

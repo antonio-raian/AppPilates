@@ -29,23 +29,34 @@ import {
   Text,
   TouchableOpacity,
   Modal,
-  Slider,
   TextInput,
   Alert,
 } from 'react-native';
 import api from '../../utils/api';
 import {CommonActions} from '@react-navigation/native';
+import Slider from '@react-native-community/slider';
 
 const hasDificult = (dif) => {
-  if (dif == 0) return 'Nem suei';
-  if (dif > 0 && dif < 3) return 'Faria mais certeza';
-  if (dif >= 3 && dif < 6) return 'Ainda tenho fôlego';
-  if (dif >= 6 && dif <= 9) return 'Muito cansado';
-  if (dif > 9 && dif <= 10) return 'Exausto!';
+  if (dif == 0) {
+    return 'Nem suei';
+  }
+  if (dif > 0 && dif < 3) {
+    return 'Faria mais certeza';
+  }
+  if (dif >= 3 && dif < 6) {
+    return 'Ainda tenho fôlego';
+  }
+  if (dif >= 6 && dif <= 9) {
+    return 'Muito cansado';
+  }
+  if (dif > 9 && dif <= 10) {
+    return 'Exausto!';
+  }
 };
 
 const Activity = ({route, navigation}) => {
-  const {activity, token, today} = route.params;
+  const {token, today} = route.params;
+  const activity = JSON.parse(route.params?.activity);
   const [scroller, setScroller] = useState('');
   const [openModal, setModal] = useState(false);
   const [dificult, setDifcult] = useState(activity.dificuldade_experada);
@@ -147,7 +158,8 @@ const Activity = ({route, navigation}) => {
                   borderWidth: 1,
                   borderColor: '#bbb',
                   borderRadius: 15,
-                }}></TextInput>
+                }}
+              />
             </View>
             <View
               style={{
@@ -177,7 +189,7 @@ const Activity = ({route, navigation}) => {
                         id: activity.id,
                         realizado: true,
                         data_realizado: today,
-                        dificulade_sentida: dificult,
+                        dificuldade_sentida: dificult,
                         comentario,
                       },
                       {
@@ -189,7 +201,7 @@ const Activity = ({route, navigation}) => {
                     .then((res) => {
                       Alert.alert(
                         'Avaliação enviada',
-                        'Obrigado por nos manter informado e continue treinando',
+                        'O treino de hoje já foi! 😉 \nObrigado por nos manter informados, volte amanhã e continue treinando',
                       );
                       _back();
                     })
@@ -224,7 +236,7 @@ const Activity = ({route, navigation}) => {
             <LabelBtnBack>Voltar</LabelBtnBack>
           </ButtonBack>
           <BoxLogo>
-            <Logo source={require('../../Assets/logo.png')} />
+            <Logo source={require('../../Assets/images/logoBlack.png')} />
           </BoxLogo>
         </BoxBtnBack>
         <BoxIcon>
