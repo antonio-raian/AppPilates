@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
-import { Login, Suporte } from "./pages";
+import { Login } from "./pages";
 import { AuthContext } from "./context/auth";
 
 import maTheme from "./theme";
@@ -8,7 +8,6 @@ import { ThemeProvider } from "styled-components";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import { StylesProvider } from "@material-ui/styles";
 import Routes from "./routes/Routes";
-import PrivateRoute from "./PrivateRoute";
 
 function App() {
   return (

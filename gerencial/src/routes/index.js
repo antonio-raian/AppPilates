@@ -25,7 +25,7 @@ const HOME_ROUTE = {
 };
 
 const USUARIOS_ROUTE = {
-  id: "Usuario",
+  id: "Usuarios",
   path: "/usuario",
   icon: <Group />,
   component: Usuario,
@@ -43,7 +43,7 @@ const EXERCICIOS_ROUTE = {
 };
 
 const TREINO_ROUTE = {
-  id: "Treino",
+  id: "Treinos",
   path: "/treinos",
   icon: <Timer />,
   component: Treino,
@@ -52,7 +52,7 @@ const TREINO_ROUTE = {
 };
 
 const ATIVIDADE_ROUTE = {
-  id: "Atvidade",
+  id: "Atvidades",
   path: "/atividades",
   icon: <EventNote />,
   containsHome: true,

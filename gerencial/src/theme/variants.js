@@ -8,7 +8,7 @@ const lightVariant = {
       contrastText: "#FFF",
     },
     secondary: {
-      main: "#ce4646",
+      main: grey[600],
       contrastText: "#FFF",
     },
   },
@@ -36,7 +36,7 @@ const lightVariant = {
       color: grey[900],
       background: grey[100],
       online: {
-        background: red[900],
+        background: green[500],
       },
     },
     badge: {
