@@ -15,9 +15,8 @@ import {Alert} from 'react-native';
 import api from '../../utils/api';
 
 const Login = ({navigation}) => {
-  const [user, setUser] = useState('admin');
-  const [password, setPassworld] = useState('admin123');
-  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState('');
+  const [password, setPassworld] = useState('');
 
   useEffect(() => {
     async function _getUser() {
@@ -26,7 +25,7 @@ const Login = ({navigation}) => {
       setUser(user || '');
       setPassworld(passwd || '');
     }
-    // _getUser();
+    _getUser();
   }, []);
 
   const handleSubmit = async () => {

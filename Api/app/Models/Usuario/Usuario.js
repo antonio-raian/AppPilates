@@ -15,6 +15,9 @@ class Usuario extends Model {
      * it to the database.
      */
     this.addHook("beforeSave", async (userInstance) => {
+      if (userInstance.dirty.username) {
+        userInstance.username = userInstance.username.toLowerCase();
+      }
       if (userInstance.dirty.password) {
         userInstance.password = await Hash.make(userInstance.password);
       }

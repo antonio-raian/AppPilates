@@ -17,24 +17,29 @@ const Categoria = use("App/Models/Usuario/Categoria");
 class CategoriaSeeder {
   async run() {
     await Categoria.create({
+      nome: "Developer",
+      descricao: "Desenvolvedor",
+      nivel: 1,
+    });
+    await Categoria.create({
       nome: "Master",
       descricao: "Todo Poderoso",
-      nivel: 1,
+      nivel: 2,
     });
     await Categoria.create({
       nome: "Admnistrador",
       descricao: "Tem acesso a tudo",
-      nivel: 2,
+      nivel: 3,
     });
     await Categoria.create({
       nome: "Funcionário",
       descricao: "Não tem acesso ao financeiro",
-      nivel: 3,
+      nivel: 4,
     });
     await Categoria.create({
       nome: "Cliente",
       descricao: "Só acessa o app mobile",
-      nivel: 4,
+      nivel: 5,
     });
   }
 }

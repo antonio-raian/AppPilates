@@ -59,7 +59,7 @@ const Activity = ({route, navigation}) => {
   const activity = JSON.parse(route.params?.activity);
   const [scroller, setScroller] = useState('');
   const [openModal, setModal] = useState(false);
-  const [dificult, setDifcult] = useState(activity.dificuldade_experada);
+  const [dificult, setDifcult] = useState(activity.dificuldade_esperada);
   const [comentario, setComentario] = useState('');
 
   const _back = async () => {
@@ -145,7 +145,7 @@ const Activity = ({route, navigation}) => {
               thumbTintColor={'#DF3B4F'}
               minimumTrackTintColor="#DF3B4F"
               maximumTrackTintColor="#000000"
-              onValueChange={(value) => setDifcult(value)}
+              onValueChange={(value) => setDifcult(Math.round(value))}
               style={{width: '90%', height: 50}}
             />
             <View style={{width: '90%', paddingVertical: 15}}>

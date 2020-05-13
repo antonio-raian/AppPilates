@@ -8,7 +8,7 @@ export const data = (qtd) => {
       data_treino: `2020-04-${i < 10 ? `0${i}` : i}T03:00:00.000Z`,
       data_realizado: null,
       realizado: false,
-      dificuldade_experada: 10,
+      dificuldade_esperada: 10,
       nota: null,
       dificuldade_sentida: null,
       comentario: null,

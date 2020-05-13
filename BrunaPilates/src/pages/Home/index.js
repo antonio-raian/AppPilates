@@ -49,7 +49,7 @@ const Home = ({navigation}) => {
       await api
         .post(
           '/usuario/atividade/busca',
-          {usuario_id: usuario.id},
+          {busca: {}, from: 'mobile'},
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -88,7 +88,7 @@ const Home = ({navigation}) => {
           <ListButton
             past={past}
             forward={forward}
-            // disabled={!today}
+            realizado={d.realizado}
             onPress={() => {
               console.log('<><><><><', d.realizado, today);
               !d.realizado && today

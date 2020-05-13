@@ -89,15 +89,12 @@ class AtividadeService {
         status: 400,
         message: "Treino de usuario não encontrado",
       };
-    if (!atividade.ativo)
+    if (atividade.realizado)
       throw {
         status: 400,
-        message: "Treino de usuario já removido",
+        message: "O treino já foi realizado, não pode ser apagado",
       };
-
-    atividade.ativo = false;
-
-    return await atividade.save();
+    return await atividade.delete();
   }
 }
 

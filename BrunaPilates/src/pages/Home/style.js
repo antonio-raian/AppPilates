@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
-import {secondaryColor, primaryColor} from '../../utils/colors';
+import {secondaryColor, primaryColor, gray} from '../../utils/colors';
 
 /*
 borderColor: #000
@@ -49,8 +49,16 @@ export const MenuButton = styled.TouchableOpacity`
 export const ListButton = styled.TouchableOpacity`
   width: 100%
   height: 100%
+  borderWidth: ${(props) => (props.realizado ? '10px' : '0px')}
+  borderColor: ${primaryColor}
   background-color: ${(props) =>
-    props.past ? '#606060' : props.forward ? secondaryColor : primaryColor}
+    props.past
+      ? '#606060'
+      : props.realizado
+      ? gray
+      : props.forward
+      ? secondaryColor
+      : primaryColor}
   justifyContent: center
   alignItems: center
   borderRadius: 50px
