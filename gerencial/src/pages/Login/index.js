@@ -47,7 +47,7 @@ const Login = () => {
           }
         })
         .catch((err) => {
-          console.log("Erro no login", err.response);
+          console.log("Erro no login", JSON.stringify(err));
           setMensErr(
             err.response ? err.response.data.message : "Contate o suporte" + err
           );
