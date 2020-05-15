@@ -85,7 +85,7 @@ const Exercicio = () => {
 
       <Paper square>
         <Grid container style={{}}>
-          <Grid item md={12} lg={12}>
+          <Grid item xs={12} md={12} lg={12}>
             <TableComponent
               top={true}
               title={
