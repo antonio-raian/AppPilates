@@ -13,7 +13,6 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Redirect } from "react-router-dom";
 
 import { StyPaper, BoxLogo, BoxForms, BoxSubmit, BtnSubmit } from "./styled";
-import sessao from "../../services/Api/login";
 import Axios from "axios";
 import { URL } from "../../services/Api/url_server";
 
