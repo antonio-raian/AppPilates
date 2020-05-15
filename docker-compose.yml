@@ -1,0 +1,58 @@
+version: "3.2"
+services:
+  db:
+    container_name: pilates_db
+    image: postgres
+    restart: always
+    expose:
+      - "5432"
+    ports:
+      - "5431:5432"
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    environment:
+      # POSTGRES_DB: pilates_api
+      POSTGRES_USER: mr_mendes
+      POSTGRES_PASSWORD: 22121409
+    networks:
+      - net_db
+
+  backend:
+    container_name: pilates_api
+    # image: "devoluti/posto7-api:latest"
+    build: ./Api/.
+    working_dir: /home/backend
+    restart: always
+    environment:
+      - NODE_ENV=development
+      - TZ=America/Bahia
+    networks:
+      - net_frontend
+      - net_db
+    ports:
+      - 8080:3333
+    volumes:
+      - ./Api:/home/backend
+    depends_on:
+      - db
+
+  frontend:
+    container_name: pilates_gerencial
+    image: node:latest
+    working_dir: /home/gerencial
+    restart: always
+    environment:
+      - NODE_ENV=development
+      - TZ=America/Bahia
+    networks:
+      - net_frontend
+    ports:
+      - 80:3000
+    volumes:
+      - ./gerencial/:/home/gerencial
+    command: "yarn start"
+    tty: true
+
+networks:
+  net_frontend:
+  net_db:
