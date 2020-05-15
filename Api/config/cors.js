@@ -16,7 +16,7 @@ module.exports = {
   | Function - Receives the current origin and should return one of the above values.
   |
   */
-  origin: "0.0.0.0/0",
+  origin: "*",
 
   /*
   |--------------------------------------------------------------------------
