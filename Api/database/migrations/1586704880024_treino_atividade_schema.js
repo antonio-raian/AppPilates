@@ -12,7 +12,7 @@ class AtividadeSchema extends Schema {
       table.date("data_treino").notNullable();
       table.date("data_realizado");
       table.boolean("realizado").defaultTo(false);
-      table.float("dificuldade_experada").notNullable().unsigned();
+      table.float("dificuldade_esperada").notNullable().unsigned();
       //Avaliação
       table.float("dificuldade_sentida").unsigned();
       table.string("comentario");

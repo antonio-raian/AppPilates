@@ -92,7 +92,7 @@ const Novo = (props) => {
               style={{ paddingBottom: 10 }}
             >
               <Tooltip title="Exercício" placement="top-start">
-                <Grid item>
+                <Grid item xs={10}>
                   <TextField
                     id="exercicio"
                     label="Exercício"

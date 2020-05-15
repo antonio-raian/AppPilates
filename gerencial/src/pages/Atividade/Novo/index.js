@@ -107,9 +107,14 @@ const Novo = (props) => {
   };
 
   const _handleDelete = (treino) => {
-    const aux = showTreinos.slice();
+    const aux = [];
+    showTreinos.map((tre) => {
+      if (tre.id != treino.id) aux.push(tre);
+    });
 
-    setShowTreinos(aux.splice(aux.indexOf(treino), 1));
+    console.log("AUX", aux);
+
+    setShowTreinos(aux);
   };
 
   return (
@@ -183,7 +188,7 @@ const Novo = (props) => {
                 style={{ paddingBottom: 10 }}
               >
                 <Tooltip title="Título do Treino" placement="top-start">
-                  <Grid item>
+                  <Grid item xs={12}>
                     <TextField
                       id="titulo"
                       label="Título"
@@ -262,82 +267,76 @@ const Novo = (props) => {
               </Grid>
             </Grid>
 
+            <Typography variant="h3" style={{ paddingBottom: 10 }}>
+              Treinos
+            </Typography>
             {/* Treinos */}
-            <Grid container style={{ paddingBottom: 10 }}>
-              <Typography variant="h3" style={{ paddingBottom: 10 }}>
-                Treinos
-              </Typography>
-              <Grid container>
-                <Grid container direction="row" style={{ paddingBottom: 10 }}>
-                  <Tooltip title="Treino" placement="top-start">
-                    <Grid item xs={11}>
-                      <TextField
-                        id="treino"
-                        label="Treino"
-                        variant="outlined"
-                        color="secondary"
-                        style={{ width: "98%" }}
-                        value={treino}
-                        select
-                        onChange={(e) => {
-                          setTreino(e.target.value);
-                          if (!atividade.usuario_id) return setError(errors[0]);
-                          if (!atividade.titulo) return setError(errors[1]);
-                          if (!atividade.dificuldade_esperada)
-                            return setError(errors[2]);
-                          if (!atividade.data_treino)
-                            return setError(errors[3]);
-                          if (showTreinos.length <= 0)
-                            return setError(errors[4]);
-                        }}
-                      >
-                        {treinos.map((element) => (
-                          <MenuItem
-                            key={element.id}
-                            value={JSON.stringify(element)}
-                          >
-                            {element.exercicio.nome} -> R:{element.repeticoes}{" "}
-                            S:{element.qtd_series} I:{element.intervalo}s
-                          </MenuItem>
-                        ))}
-                      </TextField>
-                    </Grid>
-                  </Tooltip>
-                  <Tooltip
-                    title="Adcionar Treino nessa atividade"
-                    placement="top-start"
+            <Grid container direction="row" style={{ paddingBottom: 10 }}>
+              <Tooltip title="Treino" placement="top-start">
+                <Grid item xs={11}>
+                  <TextField
+                    id="treino"
+                    label="Treino"
+                    variant="outlined"
+                    color="secondary"
+                    style={{ width: "98%" }}
+                    value={treino}
+                    select
+                    onChange={(e) => {
+                      setTreino(e.target.value);
+                      if (!atividade.usuario_id) return setError(errors[0]);
+                      if (!atividade.titulo) return setError(errors[1]);
+                      if (!atividade.dificuldade_esperada)
+                        return setError(errors[2]);
+                      if (!atividade.data_treino) return setError(errors[3]);
+                      if (showTreinos.length <= 0) return setError(errors[4]);
+                    }}
                   >
-                    <Grid item xs={1}>
-                      <ButtonSuccess
-                        fullWidth
-                        disabled={!treino}
-                        style={{ height: "100%" }}
-                        color="primary"
-                        onClick={() => {
-                          _handleAdd();
-                        }}
+                    {treinos.map((element) => (
+                      <MenuItem
+                        key={element.id}
+                        value={JSON.stringify(element)}
                       >
-                        <Add />
-                      </ButtonSuccess>
-                    </Grid>
-                  </Tooltip>
-                  <Grid item md={12} lg={12}>
-                    <TableComponent
-                      columns={colunas}
-                      data={showTreinos}
-                      handleDetails={() => {}}
-                      actions={[
-                        (rowData) => ({
-                          icon: () => <Delete />,
-                          tooltip: "Remover Linha",
-                          onClick: () => {
-                            _handleDelete(rowData);
-                          },
-                        }),
-                      ]}
-                    />
-                  </Grid>
+                        {element.exercicio.nome} -> R:{element.repeticoes} S:
+                        {element.qtd_series} I:{element.intervalo}s
+                      </MenuItem>
+                    ))}
+                  </TextField>
                 </Grid>
+              </Tooltip>
+              <Tooltip
+                title="Adcionar Treino nessa atividade"
+                placement="top-start"
+              >
+                <Grid item xs={1}>
+                  <ButtonSuccess
+                    fullWidth
+                    disabled={!treino}
+                    style={{ height: "100%" }}
+                    color="primary"
+                    onClick={() => {
+                      _handleAdd();
+                    }}
+                  >
+                    <Add />
+                  </ButtonSuccess>
+                </Grid>
+              </Tooltip>
+              <Grid item xs={12} md={12} lg={12}>
+                <TableComponent
+                  columns={colunas}
+                  data={showTreinos}
+                  handleDetails={() => {}}
+                  actions={[
+                    (rowData) => ({
+                      icon: () => <Delete />,
+                      tooltip: "Remover Linha",
+                      onClick: () => {
+                        _handleDelete(rowData);
+                      },
+                    }),
+                  ]}
+                />
               </Grid>
             </Grid>
           </Grid>
