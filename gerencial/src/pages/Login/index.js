@@ -13,7 +13,9 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Redirect } from "react-router-dom";
 
 import { StyPaper, BoxLogo, BoxForms, BoxSubmit, BtnSubmit } from "./styled";
-import { post } from "../../services/Requests";
+import sessao from "../../services/Api/login";
+import Axios from "axios";
+import { URL } from "../../services/Api/url_server";
 
 const Login = () => {
   const [state] = React.useState({
@@ -28,20 +30,24 @@ const Login = () => {
 
   const [isLoged, setLoged] = useState(false);
 
-  const _handleSubmit = () => {
+  const _handleSubmit = async () => {
     setLoading(true);
     console.log("Apertou");
     if (username && password) {
-      post("/usuario/login", { from: "web", username, password })
+      await Axios.post(`${URL}/usuario/login`, {
+        from: "web",
+        username,
+        password,
+      })
         .then((res) => {
-          if (res) {
-            console.log("Resposta Login", JSON.stringify(res));
-            localStorage.setItem("token", res.token.token);
-            localStorage.setItem("user", JSON.stringify(res.usuario));
-            localStorage.setItem("username", res.usuario.username);
+          if (res.data) {
+            console.log("Resposta Login", JSON.stringify(res.data));
+            localStorage.setItem("token", res.data.token.token);
+            localStorage.setItem("user", JSON.stringify(res.data.usuario));
+            localStorage.setItem("username", res.data.usuario.username);
             localStorage.setItem(
               "categoria",
-              JSON.stringify(res.usuario.categoria)
+              JSON.stringify(res.data.usuario.categoria)
             );
             setLoged(true);
           }

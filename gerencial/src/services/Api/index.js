@@ -1,9 +1,10 @@
 import axios from "axios";
+import { URL } from "./url_server";
 
 const token = localStorage.getItem("token");
 
 const api = axios.create({
-  baseURL: "http://192.168.0.103:8080",
+  baseURL: URL,
   headers: {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": "true",
