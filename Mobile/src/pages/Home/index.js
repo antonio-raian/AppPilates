@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Container,
   MenuButton,
@@ -18,14 +18,13 @@ import {
   BoxLeft,
   Loading,
 } from './style';
-import {Dimensions, View, Alert} from 'react-native';
+import {Dimensions, Alert, RefreshControl} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import moment from 'moment';
 import ptBR from 'moment/locale/pt-br';
-import {Menu, Provider, ActivityIndicator} from 'react-native-paper';
+import {Menu, Provider} from 'react-native-paper';
 import {logout} from '../../utils/validators';
 import {CommonActions} from '@react-navigation/native';
-import {data} from '../../utils/data';
 import api from '../../utils/api';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -38,13 +37,15 @@ const Home = ({navigation}) => {
   const screenHeight = Dimensions.get('window').height;
   const [scroller, setScroller] = useState('');
 
+  const [refresh, setRefresh] = useState(true);
+
   useEffect(() => {
     async function _getItems() {
       const obj = await AsyncStorage.getItem('user');
-      const token = await AsyncStorage.getItem('token');
+      const token2 = await AsyncStorage.getItem('token');
       const usuario = JSON.parse(obj);
       setUser(usuario);
-      setToken(token);
+      setToken(token2);
       setLoading(true);
       await api
         .post(
@@ -52,21 +53,24 @@ const Home = ({navigation}) => {
           {busca: {}, from: 'mobile'},
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${token2}`,
             },
           },
         )
         .then((res) => {
           console.log('Atividades', res.data);
           setItems(res.data);
+          setRefresh(false);
           setLoading(false);
         })
         .catch((err) => {
           console.log('Erro Listar atividades', err);
         });
     }
-    _getItems();
-  }, []);
+    if (refresh) {
+      _getItems();
+    }
+  }, [refresh]);
 
   const _renderData = () => {
     // let today = 0;
@@ -159,6 +163,14 @@ const Home = ({navigation}) => {
             </Center>
           ) : (
             <Scrolled
+              refreshControl={
+                <RefreshControl
+                  refreshing={refresh}
+                  onRefresh={() => {
+                    setRefresh(true);
+                  }}
+                />
+              }
               ref={(scroll) => {
                 setScroller(scroll);
               }}>

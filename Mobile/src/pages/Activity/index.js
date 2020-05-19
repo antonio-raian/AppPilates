@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState} from 'react';
 import {
   Container,
   Background,
@@ -37,7 +37,7 @@ import {CommonActions} from '@react-navigation/native';
 import Slider from '@react-native-community/slider';
 
 const hasDificult = (dif) => {
-  if (dif == 0) {
+  if (dif === 0) {
     return 'Nem suei';
   }
   if (dif > 0 && dif < 3) {
