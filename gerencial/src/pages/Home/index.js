@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Grid, Paper } from "@material-ui/core";
+import { Grid, Paper, Typography } from "@material-ui/core";
 
 const Home = () => {
   useEffect(() => {
@@ -13,7 +13,7 @@ const Home = () => {
       <Paper square>
         <Grid container style={{}}>
           <Grid item md={12} lg={12}>
-            DashBoard
+            <Typography variant="h2">DashBoard</Typography>
           </Grid>
         </Grid>
       </Paper>
