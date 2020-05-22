@@ -6,8 +6,8 @@ COPY package.json ./
 COPY yarn.lock ./
 
 RUN yarn install
-RUN yarn global add @adonisjs/cli nodemon
+RUN yarn global add @adonisjs/cli nodemon 
 
 COPY . .
 
-CMD [ "adonis", "serve" ]
+CMD [ "adonis", "serve", "--dev" ]
