@@ -1,8 +1,13 @@
 import api from "../Api";
 
 export const post = async (route, obj) => {
+  const token = localStorage.getItem("token");
   return await api
-    .post(route, obj)
+    .post(route, obj, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     .then((res) => {
       if (res.data) {
         return res.data;
@@ -15,21 +20,36 @@ export const post = async (route, obj) => {
 };
 
 export const get = async (route) => {
-  try {
-    return await api.get(route).then((res) => {
+  const token = localStorage.getItem("token");
+  return await api
+    .get(route, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
       if (res.data) {
         return res.data;
       }
       return false;
+    })
+    .catch((err) => {
+      throw err;
     });
-  } catch (err) {
-    throw err;
-  }
 };
 
 export const remove = async (route, obj) => {
+  const token = localStorage.getItem("token");
   return await api
-    .delete(route, { data: obj })
+    .delete(
+      route,
+      { data: obj },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
     .then((res) => {
       if (res.data) {
         return true;
