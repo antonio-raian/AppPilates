@@ -26,6 +26,20 @@ Route.get("/get_version/:version", ({ params, response }) => {
   response.download(Helpers.appRoot(`/versions/${params.version}.apk`));
 });
 
+Route.post("/set_version/:version", async ({ params, request }) => {
+  const versao = request.file(`file`);
+  // return request.file("file");
+
+  await versao.move(Helpers.appRoot(`/versions`), {
+    name: `${params.version}.apk`,
+    overwrite: true,
+  });
+
+  if (!versao.moved()) return versao.error();
+
+  return "Arquivo adicionado";
+});
+
 Route.group("categoria", () => {
   Route.post("/nova", "Usuario/CategoriaController.create");
   Route.post("/busca", "Usuario/CategoriaController.read");
