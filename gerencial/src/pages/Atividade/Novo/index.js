@@ -88,6 +88,8 @@ const Novo = (props) => {
   };
 
   const _handleClose = () => {
+    setShowTreinos([]);
+    setAtvTreinos([]);
     setAtividade({});
     setOpen(false);
     refresh();
@@ -108,13 +110,17 @@ const Novo = (props) => {
 
   const _handleDelete = (treino) => {
     const aux = [];
+    //deleta do show
     showTreinos.map((tre) => {
       if (tre.id != treino.id) aux.push(tre);
     });
-
     console.log("AUX", aux);
 
     setShowTreinos(aux);
+
+    atvTreinos.map((tre) => {
+      if (tre != treino.id) aux.push(tre);
+    });
   };
 
   return (
