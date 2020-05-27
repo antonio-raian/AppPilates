@@ -15,9 +15,29 @@
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use("Route");
+const Helpers = use("Helpers");
 
 Route.get("/", () => {
   return { greeting: "Você está na api do Bruna Pilates" };
+});
+
+Route.get("/get_version/:version", ({ params, response }) => {
+  // return Helpers.appRoot("/app");
+  response.download(Helpers.appRoot(`/versions/${params.version}.apk`));
+});
+
+Route.post("/set_version/:version", async ({ params, request }) => {
+  const versao = request.file(`file`);
+  // return request.file("file");
+
+  await versao.move(Helpers.appRoot(`/versions`), {
+    name: `${params.version}.apk`,
+    overwrite: true,
+  });
+
+  if (!versao.moved()) return versao.error();
+
+  return "Arquivo adicionado";
 });
 
 Route.group("categoria", () => {

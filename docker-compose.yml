@@ -19,8 +19,7 @@ services:
 
   backend:
     container_name: pilates_api
-    # image: "devoluti/posto7-api:latest"
-    build: ./Api/.
+    image: antonioraian/adonisjs
     working_dir: /home/backend
     restart: always
     environment:

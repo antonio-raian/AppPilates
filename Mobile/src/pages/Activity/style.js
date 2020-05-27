@@ -25,14 +25,15 @@ export const Background = styled(LinearGradient).attrs({
 `;
 
 export const BoxIcon = styled.View`
-  flex-direction: row;
+  flex-direction: row
+  width: 90%
 `;
 export const BoxTitle = styled.View`
-  width: 60%
+  width: 100%
  justifyContent: center
 `;
 export const BoxLogo = styled.View`
-width: 75%
+width: 30%
 height: 100%
 alignItems: flex-end
 `;
@@ -48,13 +49,13 @@ export const TitleHeader = styled.Text`
 export const SubTitleHeader = styled.Text`
 color: #fff
 width: 100%
-fontSize: 25px
+fontSize: 20px
 paddingHorizontal: 20px
 fontWeight: bold
 `;
 
 export const Logo = styled.Image.attrs({tintColor: '#fff'})`
-  width: 20%
+  width: 38%
   height: 100%
 `;
 
@@ -128,13 +129,14 @@ export const BoxBtnBack = styled.View`
   flexDirection: row
 `;
 export const ButtonBack = styled.TouchableOpacity`
-  width: 25%
+  width: 70%
   justifyContent: center
   alignItems: center
   flexDirection: row
 `;
 
 export const LabelBtnBack = styled.Text`
+  width: 85%
   color: #fff
   fontWeight: bold
   fontSize: 20px

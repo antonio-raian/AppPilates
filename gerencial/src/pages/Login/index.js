@@ -33,20 +33,31 @@ const Login = () => {
     setLoading(true);
     console.log("Apertou");
     if (username && password) {
-      await Axios.post(`${URL}/usuario/login`, {
-        from: "web",
-        username,
-        password,
+      await fetch(`${URL}/usuario/login`, {
+        method: "POST",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Credentials": "true",
+          "Content-Type": "application/json",
+          Accept: "*/*",
+        },
+        body: JSON.stringify({
+          from: "web",
+          username,
+          password,
+        }),
       })
+        .then((res) => res.json())
         .then((res) => {
-          if (res.data) {
-            console.log("Resposta Login", JSON.stringify(res.data));
-            localStorage.setItem("token", res.data.token.token);
-            localStorage.setItem("user", JSON.stringify(res.data.usuario));
-            localStorage.setItem("username", res.data.usuario.username);
+          console.log("FETCH", res);
+          if (res.token) {
+            console.log("Resposta Login", JSON.stringify(res));
+            localStorage.setItem("token", res.token.token);
+            localStorage.setItem("user", JSON.stringify(res.usuario));
+            localStorage.setItem("username", res.usuario.username);
             localStorage.setItem(
               "categoria",
-              JSON.stringify(res.data.usuario.categoria)
+              JSON.stringify(res.usuario.categoria)
             );
             setLoged(true);
           }

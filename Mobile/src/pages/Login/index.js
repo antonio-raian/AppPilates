@@ -41,7 +41,7 @@ const Login = ({navigation}) => {
         await AsyncStorage.setItem('token', usuario.token.token);
         console.log(res.data);
       })
-      .catch((err) => console.log('Erro Login', err));
+      .catch((err) => Alert.alert('Erro Login', err.response.data.message));
     await navigation.dispatch(
       CommonActions.reset({
         index: 1,
