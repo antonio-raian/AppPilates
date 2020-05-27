@@ -14,7 +14,7 @@ import {primaryColor} from '../../utils/colors';
 const App: () => React$Node = () => {
   return (
     <>
-      <StatusBar backgroundColor={primaryColor} />
+      <StatusBar backgroundColor={'#FE8828'} />
       <Routes />
     </>
   );

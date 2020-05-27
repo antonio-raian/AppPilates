@@ -22,7 +22,7 @@ export const Form = styled.KeyboardAvoidingView.attrs({behavior: 'padding'})`
 `;
 
 export const Background = styled.ImageBackground.attrs({
-  source: require('../../Assets/images/fundo1.png'),
+  source: require('../../Assets/images/fundo2.jpeg'),
 })`
   flex: 1
   width: 100%
@@ -39,14 +39,14 @@ export const Input = styled.TextInput.attrs({
   background-color: #FFF
   borderColor: ${primaryColor}
   color: #6B6B6B
-  width: 90%
+  width: 78%
   fontSize: 20px
   paddingHorizontal: 25px
 `;
 
 export const Logo = styled.Image.attrs({tintColor: '#fff'})`
-  width: 60%
-  height: 22%
+  width: 70%
+  height: 15.5%
   padding: 50px
 `;
 //Gambiarra
@@ -58,7 +58,7 @@ export const Submit = styled.TouchableOpacity`
   marginTop: 10px
   borderRadius: 50px
   background-color: ${gray}
-  width: 90%
+  width: 78%
   `;
 
 export const SubmitText = styled.Text`

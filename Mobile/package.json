@@ -1,6 +1,6 @@
 {
-  "name": "BrunaPilates",
-  "version": "0.0.1",
+  "name": "Método Integrado - Bruna Borges",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "android": "npx react-native run-android",

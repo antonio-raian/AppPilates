@@ -55,7 +55,7 @@ fontWeight: bold
 `;
 
 export const Logo = styled.Image.attrs({tintColor: '#fff'})`
-  width: 38%
+  width: 20%
   height: 100%
 `;
 
@@ -73,8 +73,10 @@ export const Lista = styled.View`
 export const ContainerTreino = styled.View`
   width: ${(Dimensions.get('window').width * 90) / 100}px
   backgroundColor: #fff
+  borderColor: #000
+  borderWidth: 1px
   padding: 5px
-  borderRadius: 10px
+  borderRadius: 40px
 `;
 
 export const Label = styled.Text`
@@ -124,7 +126,8 @@ export const LabelBtnEnd = styled.Text`
 
 //Botão Voltar
 export const BoxBtnBack = styled.View`
-  width: 100%
+  paddingTop: 5px
+  width: 90%
   height: 25%
   flexDirection: row
 `;
