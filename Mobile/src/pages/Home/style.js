@@ -16,8 +16,8 @@ export const Container = styled.ImageBackground.attrs({
 `;
 
 export const ContainerButtons = styled.View`
-  width: 370px
-  height: ${(props) => (props.today ? '180px' : '90px')}
+  width: 350px
+  height: ${(props) => (props.today ? '95px' : '90px')}
   padding: 7px
   justifyContent: center
   alignItems: center
@@ -93,6 +93,7 @@ export const BoxTitle = styled.View`
 export const BoxLogo = styled.View`
   width: 30%
   height: 100%
+  alignItems: flex-end
 `;
 
 export const TitleHeader = styled.Text`
@@ -137,8 +138,8 @@ export const LabelButtonInit = styled.Text`
 `;
 
 export const Logo = styled.Image.attrs({tintColor: '#fff'})`
-  width: 100%
-  height: 55%
+  width: 38%
+  height: 45%
 `;
 
 //Renderização do conteudo do acordion

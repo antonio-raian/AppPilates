@@ -18,7 +18,7 @@ import {
   BoxLeft,
   Loading,
 } from './style';
-import {Dimensions, Alert, RefreshControl} from 'react-native';
+import {Dimensions, Alert, RefreshControl, StatusBar} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import moment from 'moment';
 import ptBR from 'moment/locale/pt-br';
@@ -27,6 +27,7 @@ import {logout} from '../../utils/validators';
 import {CommonActions} from '@react-navigation/native';
 import api from '../../utils/api';
 import AsyncStorage from '@react-native-community/async-storage';
+import {primaryColor} from '../../utils/colors';
 
 const Home = ({navigation}) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -118,6 +119,7 @@ const Home = ({navigation}) => {
   };
   return (
     <>
+      <StatusBar backgroundColor={primaryColor} />
       <Provider>
         <HeadBackground>
           <BoxRight>
@@ -152,7 +154,7 @@ const Home = ({navigation}) => {
               <TitleHeader>{moment().format('DD/MM/YYYY')}</TitleHeader>
             </BoxTitle>
             <BoxLogo>
-              <Logo source={require('../../Assets/images/logoBlack.png')} />
+              <Logo source={require('../../Assets/images/logoB.png')} />
             </BoxLogo>
           </BoxLeft>
         </HeadBackground>

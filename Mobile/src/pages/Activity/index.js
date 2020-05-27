@@ -31,10 +31,12 @@ import {
   Modal,
   TextInput,
   Alert,
+  StatusBar,
 } from 'react-native';
 import api from '../../utils/api';
 import {CommonActions} from '@react-navigation/native';
 import Slider from '@react-native-community/slider';
+import {primaryColor} from '../../utils/colors';
 
 const hasDificult = (dif) => {
   if (dif === 0) {
@@ -104,6 +106,7 @@ const Activity = ({route, navigation}) => {
 
   return (
     <>
+      <StatusBar backgroundColor={primaryColor} />
       <Modal
         animationType="slide"
         transparent={true}
@@ -224,6 +227,7 @@ const Activity = ({route, navigation}) => {
           </View>
         </View>
       </Modal>
+
       <Background>
         <BoxBtnBack>
           <ButtonBack onPress={() => _back()}>
@@ -236,7 +240,7 @@ const Activity = ({route, navigation}) => {
             <LabelBtnBack>Voltar</LabelBtnBack>
           </ButtonBack>
           <BoxLogo>
-            <Logo source={require('../../Assets/images/logoBlack.png')} />
+            <Logo source={require('../../Assets/images/logoB.png')} />
           </BoxLogo>
         </BoxBtnBack>
         <BoxIcon>
