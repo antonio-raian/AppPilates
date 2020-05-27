@@ -7,7 +7,7 @@ import {
   CircularProgress,
   Snackbar,
 } from "@material-ui/core";
-import Logo from "../../assets/images/logoColor.png";
+import Logo from "../../assets/images/logo.svg";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Redirect } from "react-router-dom";
@@ -78,6 +78,9 @@ const Login = () => {
         <Redirect to="/home" />
       ) : (
         <StyPaper>
+          <BoxLogo>
+            <img alt="Logo" src={Logo} height="100%" />
+          </BoxLogo>
           {loading && (
             <Grid container justify="center" alignItems="center">
               <CircularProgress align="center" />
@@ -97,14 +100,6 @@ const Login = () => {
             }}
             message={mensErr}
           />
-          <BoxLogo>
-            <img
-              alt="Logo"
-              src={Logo}
-              height="100%"
-              style={{ paddingBottom: 30 }}
-            />
-          </BoxLogo>
           <BoxForms>
             <TextField
               className="inputs"

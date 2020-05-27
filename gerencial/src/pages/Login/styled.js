@@ -19,6 +19,7 @@ export const BoxLogo = styled(Grid).attrs({
 })`
   width: 100%;
   height: 50%;
+  padding-top: 30px;
   padding-bottom: 30px;
 `;
 

@@ -94,8 +94,7 @@ class Sidebar extends React.Component {
         <BoxTop>
           <img alt="Logo" src={Logo} width="30%" height="110%" />{" "}
           <div style={{ paddingLeft: "20px" }}>
-            <StyBox ml={1}>Bruna Pilates</StyBox>
-            <StyBox>Treino Online</StyBox>
+            <StyBox ml={1}>Método Integrado</StyBox>
           </div>
         </BoxTop>
 
