@@ -24,10 +24,8 @@ class AtividadeController {
       message: "Nada foi alterado",
     };
   }
-  async delete({ request }) {
-    const atividade = request.all();
-
-    return await AtividadeService.delete(atividade.id);
+  async delete({ params }) {
+    return await AtividadeService.delete(params.id);
   }
 }
 

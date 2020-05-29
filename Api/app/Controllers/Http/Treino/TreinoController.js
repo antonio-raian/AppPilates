@@ -22,10 +22,8 @@ class TreinoController {
         message: "Nada foi alterado",
       };
   }
-  async delete({ request }) {
-    const treino = request.all();
-
-    return await TreinoService.delete(treino.id);
+  async delete({ params }) {
+    return await TreinoService.delete(params.id);
   }
 }
 

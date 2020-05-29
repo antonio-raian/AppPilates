@@ -44,7 +44,7 @@ Route.group("categoria", () => {
   Route.post("/nova", "Usuario/CategoriaController.create");
   Route.post("/busca", "Usuario/CategoriaController.read");
   Route.post("/altera", "Usuario/CategoriaController.update");
-  Route.delete("/delete", "Usuario/CategoriaController.delete");
+  Route.delete("/delete/:id", "Usuario/CategoriaController.delete");
   Route.post("/usuarios", "Usuario/CategoriaController.getUsuarios");
 })
   .prefix("/categoria")
@@ -65,7 +65,7 @@ Route.group("exercicio", () => {
   Route.post("/novo", "Treino/ExercicioController.create");
   Route.post("/busca", "Treino/ExercicioController.read");
   Route.post("/altera", "Treino/ExercicioController.update");
-  Route.delete("/delete", "Treino/ExercicioController.delete");
+  Route.delete("/delete/:id", "Treino/ExercicioController.delete");
 })
   .prefix("/exercicio")
   .middleware(["auth"]);
@@ -74,7 +74,7 @@ Route.group("treino", () => {
   Route.post("/novo", "Treino/TreinoController.create");
   Route.post("/busca", "Treino/TreinoController.read");
   Route.post("/altera", "Treino/TreinoController.update");
-  Route.delete("/delete", "Treino/TreinoController.delete");
+  Route.delete("/delete/:id", "Treino/TreinoController.delete");
 })
   .prefix("/treino")
   .middleware(["auth"]);
@@ -83,7 +83,7 @@ Route.group("atividade", () => {
   Route.post("/nova", "Treino/AtividadeController.create");
   Route.post("/busca", "Treino/AtividadeController.read");
   Route.post("/altera", "Treino/AtividadeController.update");
-  Route.delete("/delete", "Treino/AtividadeController.delete");
+  Route.delete("/delete/:id", "Treino/AtividadeController.delete");
 })
   .prefix("/usuario/atividade")
   .middleware(["auth"]);

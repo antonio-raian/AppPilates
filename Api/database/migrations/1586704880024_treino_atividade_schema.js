@@ -7,7 +7,11 @@ class AtividadeSchema extends Schema {
   up() {
     this.create("atividades", (table) => {
       table.bigIncrements();
-      table.bigInteger("usuario_id").references("usuarios.id").notNullable();
+      table
+        .bigInteger("usuario_id")
+        .references("usuarios.id")
+        .notNullable()
+        .onDelete("restrict");
       table.string("titulo").notNullable();
       table.date("data_treino").notNullable();
       table.date("data_realizado");

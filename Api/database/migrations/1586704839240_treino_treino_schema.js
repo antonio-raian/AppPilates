@@ -10,7 +10,8 @@ class TreinoSchema extends Schema {
       table
         .bigInteger("exercicio_id")
         .references("exercicios.id")
-        .notNullable();
+        .notNullable()
+        .onDelete("restrict");
       table.integer("repeticoes").notNullable().unsigned();
       table.integer("qtd_series").notNullable().unsigned();
       table.integer("intervalo").notNullable().unsigned();

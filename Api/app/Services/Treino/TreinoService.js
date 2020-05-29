@@ -58,9 +58,15 @@ class TreinoService {
         message: "Treino já removido",
       };
 
-    treino.ativo = false;
+    await treino.load("atividades");
+    console.log("Exer", treino.toJSON());
 
-    return await treino.save();
+    if (treino.toJSON().atividades.length > 0) {
+      treino.ativo = false;
+
+      return await treino.save();
+    }
+    return await treino.delete();
   }
 }
 

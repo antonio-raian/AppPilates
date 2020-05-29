@@ -16,7 +16,7 @@ class AtividadeTreinoSchema extends Schema {
         .bigInteger("treino_id")
         .references("treinos.id")
         .notNullable()
-        .onDelete("cascade");
+        .onDelete("restrict");
     });
   }
 

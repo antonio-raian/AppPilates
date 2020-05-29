@@ -56,10 +56,14 @@ class ExercicioService {
         status: 400,
         message: "Exercicio já removido",
       };
+    await exercicio.load("treinos");
 
-    exercicio.ativo = false;
+    if (exercicio.toJSON().treinos.length > 0) {
+      exercicio.ativo = false;
 
-    return await exercicio.save();
+      return await exercicio.save();
+    }
+    return await exercicio.delete();
   }
 }
 

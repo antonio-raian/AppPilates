@@ -40,12 +40,10 @@ class ExceptionHandler extends BaseExceptionHandler {
     }
 
     if (String(error.code) === "23503") {
-      const detail = error.detail.match(/\(([^()]+)\)/g);
-      const column = detail[0].replace("(", "").replace(")", "");
-      const value = detail[1].replace("(", "").replace(")", "");
+      const detail = error.detail.match(/(["])(?:(?=(\\?))\2.)*?\1/g);
       return response.status(400).send({
-        title: "Dependencia Inexistente",
-        message: `${value} não existe na referencia ${column}`,
+        title: "Dependencia",
+        message: `Não pode ser removido por que ainda tem vinculo com: ${detail}`,
       });
     }
 

@@ -23,11 +23,8 @@ class ExercicioController {
         message: "Nada foi alterado",
       };
   }
-  async delete({ request }) {
-    const exercicio = request.all();
-    console.log("BODY EXERCICIO REMOVE", exercicio);
-
-    return await ExercicioService.delete(exercicio.id);
+  async delete({ params }) {
+    return await ExercicioService.delete(params.id);
   }
 }
 
