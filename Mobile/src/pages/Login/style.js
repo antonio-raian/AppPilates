@@ -18,7 +18,7 @@ export const Form = styled.KeyboardAvoidingView.attrs({behavior: 'padding'})`
   paddingTop: 20px
   justifyContent: center;
   alignItems: center
-  width: 100%;
+  width: 70%;
 `;
 
 export const Background = styled.ImageBackground.attrs({
@@ -39,15 +39,14 @@ export const Input = styled.TextInput.attrs({
   background-color: #FFF
   borderColor: ${primaryColor}
   color: #6B6B6B
-  width: 78%
+  width: 100%
   fontSize: 20px
   paddingHorizontal: 25px
 `;
 
 export const Logo = styled.Image.attrs({tintColor: '#fff'})`
-  width: 70%
-  height: 15.5%
-  padding: 50px
+  width: 225px
+  height: 105px
 `;
 //Gambiarra
 export const Space = styled.View`
@@ -58,7 +57,7 @@ export const Submit = styled.TouchableOpacity`
   marginTop: 10px
   borderRadius: 50px
   background-color: ${gray}
-  width: 78%
+  width: 100%
   `;
 
 export const SubmitText = styled.Text`

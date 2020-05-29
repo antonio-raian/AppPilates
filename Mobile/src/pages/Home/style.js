@@ -8,7 +8,7 @@ borderWidth: 3px
 */
 
 export const Container = styled.ImageBackground.attrs({
-  source: require('../../Assets/images/BackHome.jpg'),
+  // source: require('../../Assets/images/BackHome.jpg'),
   imageStyle: {width: '100%', height: '100%'},
 })`
   flex: 1
@@ -16,7 +16,7 @@ export const Container = styled.ImageBackground.attrs({
 `;
 
 export const ContainerButtons = styled.View`
-  width: 350px
+  width: 90%
   height: ${(props) => (props.today ? '95px' : '90px')}
   padding: 7px
   justifyContent: center
@@ -47,7 +47,7 @@ export const MenuButton = styled.TouchableOpacity`
 `;
 
 export const ListButton = styled.TouchableOpacity`
-  width: 100%
+  width: 250px
   height: 100%
   borderWidth: ${(props) => (props.realizado ? '10px' : '0px')}
   borderColor: ${primaryColor}
@@ -61,7 +61,6 @@ export const ListButton = styled.TouchableOpacity`
       : primaryColor}
   justifyContent: center
   alignItems: center
-  borderRadius: 50px
   padding: 10px
 `;
 
@@ -78,9 +77,9 @@ export const BoxRight = styled.View`
   borderRightWidth: 1px
 `;
 export const BoxLeft = styled.View`
-width: 60%
-height: 100%
-flexDirection: row
+  width: 60%
+  height: 100%
+  flexDirection: row
 `;
 
 export const BoxTitle = styled.View`
@@ -94,6 +93,7 @@ export const BoxLogo = styled.View`
   width: 30%
   height: 100%
   alignItems: flex-end
+  justify-content: center
 `;
 
 export const TitleHeader = styled.Text`
@@ -138,8 +138,8 @@ export const LabelButtonInit = styled.Text`
 `;
 
 export const Logo = styled.Image.attrs({tintColor: '#fff'})`
-  width: 38%
-  height: 45%
+  width: 30px
+  height: 50px
 `;
 
 //Renderização do conteudo do acordion
@@ -154,7 +154,7 @@ export const Child = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-size: 25px
+  font-size: 20px
   padding: 10px
   justifyContent: center
   alignItems: center

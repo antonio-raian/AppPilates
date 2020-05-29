@@ -1,6 +1,6 @@
 {
-  "name": "Método Integrado - Bruna Borges",
-  "version": "0.2.0",
+  "name": "Metodo_Integrado",
+  "version": "0.2.1",
   "private": true,
   "scripts": {
     "android": "npx react-native run-android",

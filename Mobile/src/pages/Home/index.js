@@ -28,6 +28,7 @@ import {CommonActions} from '@react-navigation/native';
 import api from '../../utils/api';
 import AsyncStorage from '@react-native-community/async-storage';
 import {primaryColor} from '../../utils/colors';
+import {View} from 'native-base';
 
 const Home = ({navigation}) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -109,7 +110,7 @@ const Home = ({navigation}) => {
                       : 'Os treinos só ficam disponíveis no dia expecífico!',
                   );
             }}>
-            <Title>{`Treino dia ${moment(d.data_treino).format(
+            <Title>{`Treino ${moment(d.data_treino).format(
               'DD MMM YYYY',
             )}`}</Title>
           </ListButton>

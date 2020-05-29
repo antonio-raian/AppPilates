@@ -11,7 +11,7 @@ class UsuarioController {
     const usuario = (await UsuarioService.read(username)).toJSON()[0];
     switch (from) {
       case "web":
-        if (usuario.categoria.nivel > 3 || usuario.situacao !== "Ativo")
+        if (usuario.categoria.nivel > 4 || usuario.situacao !== "Ativo")
           throw {
             status: 401,
             message: "Não possui permissão pra acessar o gerencial!",

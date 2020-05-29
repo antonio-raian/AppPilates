@@ -9,7 +9,7 @@ borderWidth: 3px
 */
 
 export const Container = styled.ImageBackground.attrs({
-  source: require('../../Assets/images/BackHome.jpg'),
+  // source: require('../../Assets/images/BackHome.jpg'),
   imageStyle: {width: '100%', height: '100%'},
 })`
   flex: 1
@@ -33,9 +33,10 @@ export const BoxTitle = styled.View`
  justifyContent: center
 `;
 export const BoxLogo = styled.View`
-width: 30%
-height: 100%
-alignItems: flex-end
+  width: 30%
+  height: 300%
+  alignItems: flex-end
+  justify-content: center
 `;
 
 export const TitleHeader = styled.Text`
@@ -49,14 +50,14 @@ export const TitleHeader = styled.Text`
 export const SubTitleHeader = styled.Text`
 color: #fff
 width: 100%
-fontSize: 20px
+fontSize: 18px
 paddingHorizontal: 20px
 fontWeight: bold
 `;
 
 export const Logo = styled.Image.attrs({tintColor: '#fff'})`
-  width: 20%
-  height: 100%
+  width: 28px
+  height: 48px
 `;
 
 export const Scrolled = styled.ScrollView.attrs({
@@ -71,16 +72,15 @@ export const Lista = styled.View`
   paddingBottom: 5px
 `;
 export const ContainerTreino = styled.View`
-  width: ${(Dimensions.get('window').width * 90) / 100}px
+  width: ${(Dimensions.get('window').width * 65) / 100}px
   backgroundColor: #fff
   borderColor: #000
   borderWidth: 1px
   padding: 5px
-  borderRadius: 40px
 `;
 
 export const Label = styled.Text`
-  fontSize: 20px
+  fontSize: 15px
   fontWeight: bold
 `;
 export const Title = styled.Text`
@@ -110,7 +110,7 @@ export const BoxBtnEnd = styled.View`
 
 export const ButtonEnd = styled.TouchableOpacity`
   padding: 10px
-  width: 95%
+  width: 90%
   height: 100%
   alignItems: center
   justifyContent: center
