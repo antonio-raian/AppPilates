@@ -162,16 +162,14 @@ const Novo = (props) => {
             <Button variant="contained" color="primary" onClick={_handleClose}>
               Cancelar
             </Button>
-            <Tooltip title={error} arrow>
-              <Button
-                disabled={Object.keys(objModificado).length <= 0}
-                variant="contained"
-                color="inherit"
-                onClick={_handleSubmit}
-              >
-                Salvar
-              </Button>
-            </Tooltip>
+            <Button
+              disabled={Object.keys(objModificado).length <= 0}
+              variant="contained"
+              color="inherit"
+              onClick={_handleSubmit}
+            >
+              Salvar
+            </Button>
           </DialogActions>
         </DialogContent>
       </Dialog>

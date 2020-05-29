@@ -41,15 +41,11 @@ export const get = async (route) => {
 export const remove = async (route, obj) => {
   const token = localStorage.getItem("token");
   return await api
-    .delete(
-      route,
-      { data: obj },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
+    .delete(route, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     .then((res) => {
       if (res.data) {
         return true;
@@ -57,6 +53,6 @@ export const remove = async (route, obj) => {
       return false;
     })
     .catch((err) => {
-      throw err;
+      alert(err.response.data.message);
     });
 };

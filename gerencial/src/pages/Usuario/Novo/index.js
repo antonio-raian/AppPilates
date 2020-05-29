@@ -63,10 +63,20 @@ const Novo = (props) => {
       })
       .catch((err) => alert(err));
   };
+
   const _handleClose = () => {
     setUser({});
     setOpen(false);
     refresh();
+  };
+
+  const _handleVerify = () => {
+    if (!user.username) return setError(errors[0]);
+    if (!user.categoria_id) return setError(errors[1]);
+    if (!user.password) return setError(errors[2]);
+    if (!confirm === user.password) return setError(errors[3]);
+
+    return setError("Clique para Salvar");
   };
 
   return (
@@ -106,10 +116,7 @@ const Novo = (props) => {
                     style={{ width: "95%" }}
                     onChange={(e) => {
                       setUser({ ...user, username: e.target.value });
-                      if (!user.categoria_id) return setError(errors[1]);
-                      if (!user.password) return setError(errors[2]);
-                      if (!confirm === user.password)
-                        return setError(errors[3]);
+                      _handleVerify();
                     }}
                   />
                 </Grid>
@@ -124,9 +131,10 @@ const Novo = (props) => {
                     select
                     style={{ width: "95%" }}
                     value={user.categoria_id}
-                    onChange={(e) =>
-                      setUser({ ...user, categoria_id: e.target.value })
-                    }
+                    onChange={(e) => {
+                      setUser({ ...user, categoria_id: e.target.value });
+                      _handleVerify();
+                    }}
                   >
                     {categorias.map((element) => (
                       <MenuItem key={element.id} value={element.id}>
@@ -146,9 +154,10 @@ const Novo = (props) => {
                     select
                     style={{ width: "95%" }}
                     value={user.situacao}
-                    onChange={(e) =>
-                      setUser({ ...user, situacao: e.target.value })
-                    }
+                    onChange={(e) => {
+                      setUser({ ...user, situacao: e.target.value });
+                      _handleVerify();
+                    }}
                   >
                     {situacoes.map((element) => (
                       <MenuItem key={element} value={element}>
@@ -169,9 +178,10 @@ const Novo = (props) => {
                     variant="outlined"
                     color="secondary"
                     style={{ width: "95%" }}
-                    onChange={(e) =>
-                      setUser({ ...user, password: e.target.value })
-                    }
+                    onChange={(e) => {
+                      setUser({ ...user, password: e.target.value });
+                      _handleVerify();
+                    }}
                     type={seePwd ? "text" : "password"}
                     className="inputs"
                     InputProps={{
@@ -201,7 +211,10 @@ const Novo = (props) => {
                     color={user.password === confirm ? "secondary" : "primary"}
                     type={"password"}
                     style={{ width: "95%" }}
-                    onChange={(e) => setConfirm(e.target.value)}
+                    onChange={(e) => {
+                      setConfirm(e.target.value);
+                      _handleVerify();
+                    }}
                   />
                 </Grid>
               </Tooltip>
@@ -211,22 +224,18 @@ const Novo = (props) => {
             <Button variant="contained" color="primary" onClick={_handleClose}>
               Cancelar
             </Button>
-            <Tooltip title={error} arrow>
-              <Button
-                disabled={
-                  user.username &&
-                  user.categoria_id &&
-                  user.password === confirm
-                    ? false
-                    : true
-                }
-                variant="contained"
-                color="inherit"
-                onClick={_handleSubmit}
-              >
-                Salvar
-              </Button>
-            </Tooltip>
+            <Button
+              disabled={
+                user.username && user.categoria_id && user.password === confirm
+                  ? false
+                  : true
+              }
+              variant="contained"
+              color="inherit"
+              onClick={_handleSubmit}
+            >
+              Salvar
+            </Button>
           </DialogActions>
         </DialogContent>
       </Dialog>

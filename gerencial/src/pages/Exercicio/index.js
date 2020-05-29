@@ -25,6 +25,8 @@ const Exercicio = () => {
   const [exercicios, setExercicios] = useState([]);
   const [exerUpload, setExerUpload] = useState({});
 
+  const categoria = JSON.parse(localStorage.getItem("categoria"));
+
   useEffect(() => {
     _handleLoad();
   }, []);
@@ -35,14 +37,15 @@ const Exercicio = () => {
         console.log("Resposta Busca Exercicios", res);
         const exerList = [];
         res.map((exer) => {
-          return exerList.push({
-            id: exer.id,
-            nome: exer.nome,
-            descricao: exer.descricao,
-            link: exer.link,
-            ativo: exer.ativo ? "Ativo" : "Removido",
-            data: moment(exer.created_at).format("DD/MM/YYYY HH:mm"),
-          });
+          if (exer.ativo || categoria.nivel < 2)
+            return exerList.push({
+              id: exer.id,
+              nome: exer.nome,
+              descricao: exer.descricao,
+              link: exer.link,
+              ativo: exer.ativo ? "Ativo" : "Removido",
+              data: moment(exer.created_at).format("DD/MM/YYYY HH:mm"),
+            });
         });
         setExercicios(exerList);
       })
@@ -53,14 +56,14 @@ const Exercicio = () => {
 
   const _handleDelete = () => {
     console.log(exerUpload);
-    remove("/exercicio/delete", { id: exerUpload.id })
+    remove(`/exercicio/delete/${exerUpload.id}`)
       .then((res) => {
         if (res) {
           setModalDeletar(false);
           _handleLoad();
         }
       })
-      .catch((err) => alert(err));
+      .catch((err) => {});
   };
 
   return (

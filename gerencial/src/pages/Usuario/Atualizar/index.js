@@ -57,6 +57,7 @@ const Novo = (props) => {
       })
       .catch((err) => alert(err));
   };
+
   const _handleSubmit = () => {
     post("/usuario/altera", objModificado)
       .then((res) => {
@@ -65,10 +66,18 @@ const Novo = (props) => {
       })
       .catch((err) => alert(err));
   };
+
   const _handleClose = () => {
     setObjModificado({});
     setOpen(false);
     refresh();
+  };
+
+  const _handleVerify = () => {
+    if (!objModificado.password) return setError(errors[2]);
+    if (!confirm === objModificado.password) return setError(errors[3]);
+
+    return setError("Clique para Salvar");
   };
 
   return (
@@ -116,11 +125,7 @@ const Novo = (props) => {
                         id: usuario.id,
                         username: e.target.value,
                       });
-                      if (!objModificado.categoria_id)
-                        return setError(errors[1]);
-                      if (!objModificado.password) return setError(errors[2]);
-                      if (!confirm === objModificado.password)
-                        return setError(errors[3]);
+                      _handleVerify();
                     }}
                   />
                 </Grid>
@@ -142,6 +147,7 @@ const Novo = (props) => {
                         id: usuario.id,
                         categoria_id: e.target.value,
                       });
+                      _handleVerify();
                     }}
                   >
                     {categorias.map((element) => (
@@ -169,6 +175,7 @@ const Novo = (props) => {
                         id: usuario.id,
                         situacao: e.target.value,
                       });
+                      _handleVerify();
                     }}
                   >
                     {situacoes.map((element) => (
@@ -238,7 +245,9 @@ const Novo = (props) => {
                     }
                     type={"password"}
                     style={{ width: "90%" }}
-                    onChange={(e) => setConfirm(e.target.value)}
+                    onChange={(e) => {
+                      setConfirm(e.target.value);
+                    }}
                   />
                 </Grid>
               </Tooltip>
@@ -248,16 +257,17 @@ const Novo = (props) => {
             <Button variant="contained" color="primary" onClick={_handleClose}>
               Cancelar
             </Button>
-            <Tooltip title={error} arrow>
-              <Button
-                disabled={Object.keys(objModificado).length <= 0}
-                variant="contained"
-                color="inherit"
-                onClick={_handleSubmit}
-              >
-                Salvar
-              </Button>
-            </Tooltip>
+            <Button
+              disabled={
+                Object.keys(objModificado).length <= 0 ||
+                !objModificado.password === confirm
+              }
+              variant="contained"
+              color="inherit"
+              onClick={_handleSubmit}
+            >
+              Salvar
+            </Button>
           </DialogActions>
         </DialogContent>
       </Dialog>

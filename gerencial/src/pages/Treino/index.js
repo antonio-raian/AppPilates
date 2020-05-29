@@ -27,6 +27,8 @@ const Treino = () => {
   const [treinos, setTreinos] = useState([]);
   const [treinoUpload, setTreinoUpload] = useState({});
 
+  const categoria = JSON.parse(localStorage.getItem("categoria"));
+
   useEffect(() => {
     _handleLoad();
   }, []);
@@ -37,12 +39,13 @@ const Treino = () => {
         console.log("Resposta Busca Treinos", res);
         const treinoList = [];
         res.map((trei) => {
-          return treinoList.push({
-            ...trei,
-            exercicioname: trei.exercicio.nome,
-            ativo: trei.ativo ? "Ativo" : "Removido",
-            data: moment(trei.created_at).format("DD/MM/YYYY HH:mm"),
-          });
+          if (trei.ativo || categoria.nivel < 2)
+            return treinoList.push({
+              ...trei,
+              exercicioname: trei.exercicio.nome,
+              ativo: trei.ativo ? "Ativo" : "Removido",
+              data: moment(trei.created_at).format("DD/MM/YYYY HH:mm"),
+            });
         });
         setTreinos(treinoList);
       })
@@ -53,7 +56,7 @@ const Treino = () => {
 
   const _handleDelete = () => {
     console.log(treinoUpload);
-    remove("/treino/delete", { id: treinoUpload.id })
+    remove(`/treino/delete/${treinoUpload.id}`)
       .then((res) => {
         if (res) {
           setModalDeletar(false);

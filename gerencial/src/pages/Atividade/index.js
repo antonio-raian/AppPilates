@@ -26,6 +26,8 @@ const Atividade = () => {
   const [atividades, setAtividades] = useState([]);
   const [atividadeUpload, setAtividadeUpload] = useState({});
 
+  const categoria = JSON.parse(localStorage.getItem("categoria"));
+
   useEffect(() => {
     _handleLoad();
   }, []);
@@ -36,13 +38,14 @@ const Atividade = () => {
         console.log("Resposta Busca Atividades", res);
         const ativList = [];
         res.map((atv) => {
-          return ativList.push({
-            ...atv,
-            username: atv.usuario.username,
-            realizado: atv.realizado ? "Sim" : "Não",
-            data_treino: moment(atv.data_treino).format("DD/MM/YYYY"),
-            data: moment(atv.created_at).format("DD/MM/YYYY HH:mm"),
-          });
+          if (atv.ativo || categoria.nivel < 2)
+            return ativList.push({
+              ...atv,
+              username: atv.usuario.username,
+              realizado: atv.realizado ? "Sim" : "Não",
+              data_treino: moment(atv.data_treino).format("DD/MM/YYYY"),
+              data: moment(atv.created_at).format("DD/MM/YYYY HH:mm"),
+            });
         });
         setAtividades(ativList);
       })
@@ -53,7 +56,7 @@ const Atividade = () => {
 
   const _handleDelete = () => {
     console.log(atividadeUpload);
-    remove("/usuario/atividade/delete", { id: atividadeUpload.id })
+    remove(`/usuario/atividade/delete/${atividadeUpload.id}`)
       .then((res) => {
         if (res) {
           setModalDeletar(false);
