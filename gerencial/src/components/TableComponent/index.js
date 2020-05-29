@@ -37,7 +37,7 @@ const tableIcons = {
 };
 
 const TableComponent = (props) => {
-  const { title, columns, data, actions, handleDetails, top } = props;
+  const { title, columns, data, actions, handleDetails, top, busca } = props;
 
   return (
     <MaterialTable
@@ -58,7 +58,7 @@ const TableComponent = (props) => {
       }}
       localization={{
         body: { emptyDataSourceMessage: "Não há dados para exibir!" },
-        toolbar: { searchPlaceholder: "Busca" },
+        toolbar: { searchTooltip: busca, searchPlaceholder: "Busca" },
         header: { actions: "Ações" },
         pagination: {
           labelRowsSelect: "Itens",

@@ -14,9 +14,9 @@ import { Edit, Delete } from "@material-ui/icons";
 
 const colunas = [
   { title: "Exercício", field: "exercicioname" },
-  { title: "Repetições", field: "repeticoes" },
-  { title: "Nº de Séries", field: "qtd_series" },
-  { title: "Ativo", field: "ativo" },
+  { title: "Repetições", field: "repeticoes", searchable: false },
+  { title: "Nº de Séries", field: "qtd_series", searchable: false },
+  { title: "Ativo", field: "ativo", searchable: false },
   { title: "Criado em", field: "data" },
 ];
 const Treino = () => {
@@ -26,6 +26,8 @@ const Treino = () => {
 
   const [treinos, setTreinos] = useState([]);
   const [treinoUpload, setTreinoUpload] = useState({});
+
+  const categoria = JSON.parse(localStorage.getItem("categoria"));
 
   useEffect(() => {
     _handleLoad();
@@ -37,12 +39,13 @@ const Treino = () => {
         console.log("Resposta Busca Treinos", res);
         const treinoList = [];
         res.map((trei) => {
-          return treinoList.push({
-            ...trei,
-            exercicioname: trei.exercicio.nome,
-            ativo: trei.ativo ? "Ativo" : "Removido",
-            data: moment(trei.created_at).format("DD/MM/YYYY HH:mm"),
-          });
+          if (trei.ativo || categoria.nivel < 2)
+            return treinoList.push({
+              ...trei,
+              exercicioname: trei.exercicio.nome,
+              ativo: trei.ativo ? "Ativo" : "Removido",
+              data: moment(trei.created_at).format("DD/MM/YYYY HH:mm"),
+            });
         });
         setTreinos(treinoList);
       })
@@ -53,7 +56,7 @@ const Treino = () => {
 
   const _handleDelete = () => {
     console.log(treinoUpload);
-    remove("/treino/delete", { id: treinoUpload.id })
+    remove(`/treino/delete/${treinoUpload.id}`)
       .then((res) => {
         if (res) {
           setModalDeletar(false);
@@ -126,6 +129,7 @@ const Treino = () => {
                   },
                 }),
               ]}
+              busca="Buaca por nome ou data"
               handleDetails={(obj) => (
                 <Visualizar
                   exercicio={obj.exercicio}

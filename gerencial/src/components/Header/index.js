@@ -84,13 +84,13 @@ class UserMenu extends Component {
           open={open}
           onClose={this.closeMenu}
         >
-          <MenuItem
+          {/* <MenuItem
             onClick={() => {
               this.closeMenu("minha_conta");
             }}
           >
             Minha Conta
-          </MenuItem>
+          </MenuItem> */}
           <MenuItem
             onClick={() => {
               this.closeMenu("sair");

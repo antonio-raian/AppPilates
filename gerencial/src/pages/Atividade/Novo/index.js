@@ -350,24 +350,22 @@ const Novo = (props) => {
             <Button variant="contained" color="primary" onClick={_handleClose}>
               Cancelar
             </Button>
-            <Tooltip title={error} arrow>
-              <Button
-                disabled={
-                  !(
-                    atividade.usuario_id &&
-                    atividade.titulo &&
-                    atividade.dificuldade_esperada &&
-                    atividade.data_treino &&
-                    atvTreinos.length > 0
-                  )
-                }
-                variant="contained"
-                color="inherit"
-                onClick={_handleSubmit}
-              >
-                Salvar
-              </Button>
-            </Tooltip>
+            <Button
+              disabled={
+                !(
+                  atividade.usuario_id &&
+                  atividade.titulo &&
+                  atividade.dificuldade_esperada &&
+                  atividade.data_treino &&
+                  atvTreinos.length > 0
+                )
+              }
+              variant="contained"
+              color="inherit"
+              onClick={_handleSubmit}
+            >
+              Salvar
+            </Button>
           </DialogActions>
         </DialogContent>
       </Dialog>

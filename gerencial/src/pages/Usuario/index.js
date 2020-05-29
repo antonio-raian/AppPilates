@@ -45,7 +45,7 @@ const Usuario = () => {
               categoria_id: u.categoria.id,
               categorianame: u.categoria.nome,
               categoriadesc: u.categoria.descricao,
-              situacao: u.situacao,
+              situacao: categoria.nivel <= 3 ? u.situacao : "...",
               data: u.created_at,
             });
         });
@@ -101,6 +101,7 @@ const Usuario = () => {
                   },
                 }),
               ]}
+              busca="Buaca por qualquer coluna"
               handleDetails={(obj) => (
                 <Visualizar
                   username={obj.username}

@@ -43,6 +43,13 @@ const Novo = (props) => {
     refresh();
   };
 
+  const _handleVerify = () => {
+    if (!exercicio.nome) return setError(errors[0]);
+    if (!exercicio.descricao) return setError(errors[1]);
+    if (!exercicio.link) return setError(errors[2]);
+    return setError("Clique para salvar");
+  };
+
   return (
     <>
       <Dialog maxWidth="md" open={open}>
@@ -80,8 +87,7 @@ const Novo = (props) => {
                     style={{ width: "95%" }}
                     onChange={(e) => {
                       setExercicio({ ...exercicio, nome: e.target.value });
-                      if (!exercicio.descricao) return setError(errors[1]);
-                      if (!exercicio.link) return setError(errors[2]);
+                      _handleVerify();
                     }}
                   />
                 </Grid>
@@ -99,8 +105,7 @@ const Novo = (props) => {
                     style={{ width: "95%" }}
                     onChange={(e) => {
                       setExercicio({ ...exercicio, link: e.target.value });
-                      if (!exercicio.descricao) return setError(errors[1]);
-                      if (!exercicio.nome) return setError(errors[0]);
+                      _handleVerify();
                     }}
                   />
                 </Grid>
@@ -122,8 +127,7 @@ const Novo = (props) => {
                           ...exercicio,
                           descricao: e.target.value,
                         });
-                        if (!exercicio.nome) return setError(errors[0]);
-                        if (!exercicio.link) return setError(errors[2]);
+                        _handleVerify();
                       }}
                     />
                   </Grid>
@@ -135,20 +139,18 @@ const Novo = (props) => {
             <Button variant="contained" color="primary" onClick={_handleClose}>
               Cancelar
             </Button>
-            <Tooltip title={error} arrow>
-              <Button
-                disabled={
-                  exercicio.nome && exercicio.descricao && exercicio.link
-                    ? false
-                    : true
-                }
-                variant="contained"
-                color="inherit"
-                onClick={_handleSubmit}
-              >
-                Salvar
-              </Button>
-            </Tooltip>
+            <Button
+              disabled={
+                exercicio.nome && exercicio.descricao && exercicio.link
+                  ? false
+                  : true
+              }
+              variant="contained"
+              color="inherit"
+              onClick={_handleSubmit}
+            >
+              Salvar
+            </Button>
           </DialogActions>
         </DialogContent>
       </Dialog>
