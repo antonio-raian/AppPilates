@@ -121,7 +121,7 @@ const Atividade = () => {
                   },
                 }),
               ]}
-              busca="usuário, título, treino ou criação"
+              busca="Busca por usuário, título, treino ou criação"
               handleDetails={(obj) => (
                 <Visualizar
                   titulo={obj.titulo}

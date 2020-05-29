@@ -58,7 +58,7 @@ const TableComponent = (props) => {
       }}
       localization={{
         body: { emptyDataSourceMessage: "Não há dados para exibir!" },
-        toolbar: { searchPlaceholder: busca },
+        toolbar: { searchTooltip: busca, searchPlaceholder: "Busca" },
         header: { actions: "Ações" },
         pagination: {
           labelRowsSelect: "Itens",
