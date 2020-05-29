@@ -39,16 +39,15 @@ const Usuario = () => {
         const renderUser = [];
         res.map((u) => {
           if (u.categoria.nivel >= categoria.nivel && user.id !== u.id)
-            if (u.situacao === "Ativo" || categoria.nivel <= 2)
-              return renderUser.push({
-                id: u.id,
-                username: u.username,
-                categoria_id: u.categoria.id,
-                categorianame: u.categoria.nome,
-                categoriadesc: u.categoria.descricao,
-                situacao: u.situacao,
-                data: u.created_at,
-              });
+            return renderUser.push({
+              id: u.id,
+              username: u.username,
+              categoria_id: u.categoria.id,
+              categorianame: u.categoria.nome,
+              categoriadesc: u.categoria.descricao,
+              situacao: categoria.nivel <= 3 ? u.situacao : "...",
+              data: u.created_at,
+            });
         });
         setUsuarios(renderUser);
       })
