@@ -14,9 +14,9 @@ import { Edit, Delete } from "@material-ui/icons";
 
 const colunas = [
   { title: "Exercício", field: "exercicioname" },
-  { title: "Repetições", field: "repeticoes" },
-  { title: "Nº de Séries", field: "qtd_series" },
-  { title: "Ativo", field: "ativo" },
+  { title: "Repetições", field: "repeticoes", searchable: false },
+  { title: "Nº de Séries", field: "qtd_series", searchable: false },
+  { title: "Ativo", field: "ativo", searchable: false },
   { title: "Criado em", field: "data" },
 ];
 const Treino = () => {
@@ -129,6 +129,7 @@ const Treino = () => {
                   },
                 }),
               ]}
+              busca="Buaca por nome ou data"
               handleDetails={(obj) => (
                 <Visualizar
                   exercicio={obj.exercicio}

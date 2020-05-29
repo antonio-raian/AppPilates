@@ -15,7 +15,7 @@ const colunas = [
   { title: "Usuário", field: "username" },
   { title: "Título", field: "titulo" },
   { title: "Agendamento", field: "data_treino" },
-  { title: "Realizado", field: "realizado" },
+  { title: "Realizado", field: "realizado", searchable: false },
   { title: "Criado em", field: "data" },
 ];
 const Atividade = () => {
@@ -121,6 +121,7 @@ const Atividade = () => {
                   },
                 }),
               ]}
+              busca="usuário, título, treino ou criação"
               handleDetails={(obj) => (
                 <Visualizar
                   titulo={obj.titulo}

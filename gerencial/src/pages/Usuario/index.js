@@ -101,6 +101,7 @@ const Usuario = () => {
                   },
                 }),
               ]}
+              busca="Buaca por qualquer coluna"
               handleDetails={(obj) => (
                 <Visualizar
                   username={obj.username}

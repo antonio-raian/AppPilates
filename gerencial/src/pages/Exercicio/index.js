@@ -14,7 +14,7 @@ import { Edit, Delete } from "@material-ui/icons";
 
 const colunas = [
   { title: "Nome", field: "nome" },
-  { title: "Ativo", field: "ativo" },
+  { title: "Ativo", field: "ativo", searchable: false },
   { title: "Criado em", field: "data" },
 ];
 const Exercicio = () => {
@@ -129,6 +129,7 @@ const Exercicio = () => {
                   },
                 }),
               ]}
+              busca="Buaca por nome ou data"
               handleDetails={(obj) => (
                 <Visualizar
                   nome={obj.nome}
