@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {
   Container,
   SubmitText,
@@ -8,15 +8,19 @@ import {
   Form,
   Background,
   Space,
+  Link,
 } from './style';
 import AsyncStorage from '@react-native-community/async-storage';
 import {CommonActions} from '@react-navigation/native';
-import {Alert} from 'react-native';
+import {Linking, Alert} from 'react-native';
 import api from '../../utils/api';
 
 const Login = ({navigation}) => {
   const [user, setUser] = useState('');
   const [password, setPassworld] = useState('');
+  const [url, setURL] = useState(
+    'http://www.brunaborgespilates.com.br/avaliacao.html',
+  );
 
   useEffect(() => {
     async function _getUser() {
@@ -50,6 +54,16 @@ const Login = ({navigation}) => {
     );
   };
 
+  const handlePress = useCallback(async () => {
+    const supported = await Linking.canOpenURL(url);
+
+    if (supported) {
+      await Linking.openURL(url);
+    } else {
+      Alert.alert(`Não foi possível abrir essa URL: ${url}`);
+    }
+  }, [url]);
+
   return (
     <Background>
       <Container>
@@ -69,6 +83,8 @@ const Login = ({navigation}) => {
           <Submit onPress={handleSubmit}>
             <SubmitText> Acessar </SubmitText>
           </Submit>
+          <SubmitText>ou</SubmitText>
+          <Link onPress={handlePress}>Cadastre-se</Link>
         </Form>
       </Container>
     </Background>

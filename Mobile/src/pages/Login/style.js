@@ -66,3 +66,14 @@ export const SubmitText = styled.Text`
   font-size: 20px;
   color: #FFF
 `;
+
+export const Link = styled.Text`
+  background-color: #fff
+  width: 65%
+  height: 40px
+  borderRadius: 50px
+  padding: 7px
+  text-align: center;
+  color:#000
+  font-size: 18px
+`;

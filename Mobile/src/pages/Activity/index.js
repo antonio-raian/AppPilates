@@ -22,7 +22,7 @@ import {
   ButtonBack,
   LabelBtnBack,
 } from './style';
-import ButtonLinking from '../../components/ButtonLinking';
+import ButtonVideo from '../../components/ButtonVideo';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {
   View,
@@ -97,7 +97,7 @@ const Activity = ({route, navigation}) => {
               }}>
               Veja o Vídeo abaixo para tirar dúvidas
             </Text>
-            <ButtonLinking url={treino.exercicio.link} label="vídeo" />
+            <ButtonVideo url={treino.exercicio.link} label="vídeo" />
           </ContainerTreino>
         </View>
       );
