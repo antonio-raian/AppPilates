@@ -83,7 +83,6 @@ const Login = ({navigation}) => {
           <Submit onPress={handleSubmit}>
             <SubmitText> Acessar </SubmitText>
           </Submit>
-          <SubmitText>ou</SubmitText>
           <Link onPress={handlePress}>Cadastre-se</Link>
         </Form>
       </Container>

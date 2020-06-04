@@ -133,7 +133,7 @@ android {
         applicationId "com.brunapilates"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 3145733
+        versionCode 3145734
         versionName "0.2.2"
     }
     splits {

@@ -55,6 +55,7 @@ export const Space = styled.View`
 ////////////////
 export const Submit = styled.TouchableOpacity`
   marginTop: 10px
+  marginBottom: 40px
   borderRadius: 50px
   background-color: ${gray}
   width: 100%
@@ -69,7 +70,7 @@ export const SubmitText = styled.Text`
 
 export const Link = styled.Text`
   background-color: #fff
-  width: 65%
+  width: 55%
   height: 40px
   borderRadius: 50px
   padding: 7px
