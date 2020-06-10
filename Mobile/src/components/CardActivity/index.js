@@ -9,9 +9,10 @@ import {
 } from './style';
 import ButtonVideo from '../ButtonVideo';
 import ModalVideo from '../ModalVideo';
+import {YouTubeStandaloneAndroid} from 'react-native-youtube';
 
 const CardActivity = (props) => {
-  const {title, qtd_series, repeticoes, intervalo, url} = props;
+  const {title, qtd_series, repeticoes, intervalo, url, openVideo} = props;
   const [modalOpen, setModalOpen] = useState(false);
   const [videoId, setVideoId] = useState('');
   useEffect(() => {
@@ -24,19 +25,17 @@ const CardActivity = (props) => {
 
   return (
     <>
-      <ModalVideo
+      {/* <ModalVideo
         animationType="slide"
         transparent={true}
         visible={modalOpen}
         onClose={() => setModalOpen(false)}
         videoId={videoId}
-      />
+      /> */}
+
       <ContainerTreino>
         <CardVideo>
-          <ButtonVideo
-            openVideo={(value) => setModalOpen(value)}
-            videoId={videoId}
-          />
+          <ButtonVideo openVideo={() => openVideo(videoId)} videoId={videoId} />
         </CardVideo>
         <CardInfo>
           <Title>{title}</Title>

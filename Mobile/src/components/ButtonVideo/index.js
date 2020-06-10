@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 const ButtonVideo = (props) => {
   const {openVideo, videoId} = props;
   return (
-    <Button onPress={() => openVideo(true)}>
+    <Button onPress={() => openVideo()}>
       <ImageBackground
         source={{
           uri: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,

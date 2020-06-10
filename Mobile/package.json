@@ -32,7 +32,6 @@
     "react-native-vector-icons": "^6.6.0",
     "react-native-webview": "^10.2.3",
     "react-native-youtube": "^2.0.1",
-    "react-native-youtube-iframe": "^1.2.4",
     "realm": "^5.0.3",
     "styled-components": "^5.1.0"
   },

@@ -23,6 +23,7 @@ import {CommonActions} from '@react-navigation/native';
 import {primaryColor} from '../../utils/colors';
 import CardActivity from '../../components/CardActivity';
 import ModalAvaliacao from '../../components/ModalAvaliacao';
+
 const Activity = ({route, navigation}) => {
   const {token, today} = route.params;
   const activity = JSON.parse(route.params?.activity);
@@ -39,6 +40,12 @@ const Activity = ({route, navigation}) => {
     );
   };
 
+  const _openVideo = (id) => {
+    navigation.navigate('Video', {
+      videoId: id,
+    });
+  };
+
   const _renderData = () => {
     return activity.treinos.map((treino) => {
       const exercicio = treino.exercicio;
@@ -49,6 +56,7 @@ const Activity = ({route, navigation}) => {
           repeticoes={treino.repeticoes}
           intervalo={treino.intervalo}
           url={exercicio.link}
+          openVideo={_openVideo}
         />
       );
     });
