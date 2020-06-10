@@ -55,7 +55,7 @@ export const Space = styled.View`
 ////////////////
 export const Submit = styled.TouchableOpacity`
   marginTop: 10px
-  marginBottom: 40px
+  marginBottom: 4                                             0px
   borderRadius: 50px
   background-color: ${gray}
   width: 100%

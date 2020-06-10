@@ -5,3 +5,5 @@ export const secondaryColor = '#E55238';
 export const white = '#FFFFFF';
 export const black = '#000000';
 export const gray = '#a9a9a9';
+export const gray2 = '#313842';
+export const gray3 = '#252A30';
