@@ -15,6 +15,7 @@ const CardActivity = (props) => {
   const {title, qtd_series, repeticoes, intervalo, url, openVideo} = props;
   const [modalOpen, setModalOpen] = useState(false);
   const [videoId, setVideoId] = useState('');
+
   useEffect(() => {
     const [resto, id] = url.includes('watch')
       ? url.split('watch?v=')
@@ -25,14 +26,6 @@ const CardActivity = (props) => {
 
   return (
     <>
-      {/* <ModalVideo
-        animationType="slide"
-        transparent={true}
-        visible={modalOpen}
-        onClose={() => setModalOpen(false)}
-        videoId={videoId}
-      /> */}
-
       <ContainerTreino>
         <CardVideo>
           <ButtonVideo openVideo={() => openVideo(videoId)} videoId={videoId} />

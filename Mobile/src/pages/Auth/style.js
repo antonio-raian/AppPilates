@@ -18,7 +18,7 @@ export const Container = styled(LinearGradient).attrs({
 `;
 export const Background = styled.ImageBackground`
   flex: 1
-  width: 100%
+  width: 110%
   justifyContent: center
   opacity: 100
   alignItems: center

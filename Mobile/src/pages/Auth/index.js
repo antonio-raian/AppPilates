@@ -26,7 +26,7 @@ const Auth = ({navigation}) => {
   }
   return (
     <>
-      {navigation.isFocused() ? _checkToken() : null}
+      {navigation.isFocused() && _checkToken()}
       <Container>
         <Background source={require('../../Assets/images/fundo1.png')}>
           <Loading />
