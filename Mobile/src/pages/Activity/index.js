@@ -16,6 +16,7 @@ import {
   BoxBtnBack,
   ButtonBack,
   LabelBtnBack,
+  Divider,
 } from './style';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {StatusBar} from 'react-native';
@@ -47,17 +48,23 @@ const Activity = ({route, navigation}) => {
   };
 
   const _renderData = () => {
+    let x = 0;
     return activity.treinos.map((treino) => {
       const exercicio = treino.exercicio;
+      x++;
       return (
-        <CardActivity
-          title={exercicio.nome}
-          qtd_series={treino.descricao}
-          repeticoes={treino.repeticoes}
-          intervalo={treino.intervalo}
-          url={exercicio.link}
-          openVideo={_openVideo}
-        />
+        <>
+          <CardActivity
+            title={exercicio.nome}
+            qtd_series={treino.qtd_series}
+            repeticoes={treino.repeticoes}
+            intervalo={treino.intervalo}
+            url={exercicio.link}
+            openVideo={_openVideo}
+            num={x}
+          />
+          <Divider />
+        </>
       );
     });
   };
@@ -117,7 +124,7 @@ const Activity = ({route, navigation}) => {
             onPress={() => {
               setModal(true);
             }}>
-            <LabelBtnEnd>Finalizar</LabelBtnEnd>
+            <LabelBtnEnd>FINALIZAR</LabelBtnEnd>
           </ButtonEnd>
         </BoxBtnEnd>
       </Container>

@@ -19,19 +19,19 @@ export const CardInfo = styled.View`
 `;
 
 export const Label = styled.Text.attrs({numberOfLines: 1})`
-  fontSize: 15px
+  fontSize: 18px
   color:#fff
   fontStyle: italic
 `;
 export const Title = styled.Text.attrs({numberOfLines: 1})`
   width: 100%
-  fontSize: 20px
+  fontSize: 22px
   fontWeight: bold
   color:#fff
 `;
 export const Descript = styled.Text`
   width: 100%
-  fontSize: 15px
+  fontSize: 18px
   fontWeight: bold
   color:#fff
 `;

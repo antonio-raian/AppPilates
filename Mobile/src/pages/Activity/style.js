@@ -1,7 +1,13 @@
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 import {Dimensions} from 'react-native';
-import {primaryColor, secondaryColor, gray2, gray3} from '../../utils/colors';
+import {
+  primaryColor,
+  secondaryColor,
+  gray2,
+  gray3,
+  gray,
+} from '../../utils/colors';
 
 /*
 borderColor: #000
@@ -90,6 +96,7 @@ export const LabelBtnEnd = styled.Text`
   textAlign: center
   fontSize: 25px
   fontWeight: bold
+  color: #fff
 `;
 
 //Botão Voltar
@@ -111,4 +118,10 @@ export const LabelBtnBack = styled.Text`
   color: #fff
   fontWeight: bold
   fontSize: 20px
+`;
+
+export const Divider = styled.View`
+background-color:${gray}
+width: 400px
+height: 3px
 `;

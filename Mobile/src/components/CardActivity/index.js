@@ -12,7 +12,7 @@ import ModalVideo from '../ModalVideo';
 import {YouTubeStandaloneAndroid} from 'react-native-youtube';
 
 const CardActivity = (props) => {
-  const {title, qtd_series, repeticoes, intervalo, url, openVideo} = props;
+  const {title, qtd_series, repeticoes, intervalo, url, openVideo, num} = props;
   const [modalOpen, setModalOpen] = useState(false);
   const [videoId, setVideoId] = useState('');
 
@@ -26,7 +26,7 @@ const CardActivity = (props) => {
 
   return (
     <>
-      <ContainerTreino>
+      <ContainerTreino num={num}>
         <CardVideo>
           <ButtonVideo openVideo={() => openVideo(videoId)} videoId={videoId} />
         </CardVideo>
