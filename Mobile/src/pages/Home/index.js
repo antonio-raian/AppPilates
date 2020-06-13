@@ -86,7 +86,7 @@ const Home = ({navigation}) => {
       if (today) {
         scroller.scrollTo({x: 0, y: screenHeight * x + 220, animated: true});
       }
-      return today || forward ? (
+      return (today && !d.realizado) || forward ? (
         <>
           <ContainerButtons num={x} today={today}>
             <ListButton
