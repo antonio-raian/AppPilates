@@ -69,12 +69,12 @@ const Atividade = () => {
   return (
     <>
       <Novo open={modalNovo} setOpen={setModalNovo} refresh={_handleLoad} />
-      {/* <Atualizar
+      <Atualizar
         item={atividadeUpload}
         open={modalAtualizar}
         setOpen={setModalAtualizar}
         refresh={_handleLoad}
-      /> */}
+      />
       <Deletar
         open={modalDeletar}
         setOpen={setModalDeletar}
@@ -112,6 +112,14 @@ const Atividade = () => {
               columns={colunas}
               data={atividades}
               actions={[
+                (rowData) => ({
+                  icon: () => <Edit />,
+                  tooltip: "Editar Linha",
+                  onClick: () => {
+                    setAtividadeUpload(rowData);
+                    setModalAtualizar(true);
+                  },
+                }),
                 (rowData) => ({
                   icon: () => <Delete />,
                   tooltip: "Remover Linha",
