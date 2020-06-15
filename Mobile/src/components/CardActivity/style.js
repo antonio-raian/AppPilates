@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import {Dimensions} from 'react-native';
+import TextTicker from 'react-native-text-ticker';
 import {gray2, gray3} from '../../utils/colors';
 
 export const ContainerTreino = styled.View`
@@ -23,9 +24,12 @@ export const Label = styled.Text.attrs({numberOfLines: 1})`
   color:#fff
   fontStyle: italic
 `;
-export const Title = styled.Text.attrs({numberOfLines: 1})`
+export const Title = styled(TextTicker).attrs({
+  duration: 7000,
+  numberOfLines: 1,
+})`
   width: 100%
-  fontSize: 22px
+  fontSize: 16px
   fontWeight: bold
   color:#fff
 `;
