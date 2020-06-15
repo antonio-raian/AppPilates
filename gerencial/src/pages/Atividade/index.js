@@ -114,14 +114,6 @@ const Atividade = () => {
               data={atividades}
               actions={[
                 (rowData) => ({
-                  icon: () => <Edit />,
-                  tooltip: "Editar Linha",
-                  onClick: () => {
-                    setAtividadeUpload(rowData);
-                    setModalAtualizar(true);
-                  },
-                }),
-                (rowData) => ({
                   icon: () => <Delete />,
                   tooltip: "Remover Linha",
                   onClick: () => {
@@ -129,6 +121,15 @@ const Atividade = () => {
                     setModalDeletar(true);
                   },
                 }),
+                (rowData) =>
+                  rowData.realizado === "Não" && {
+                    icon: () => <Edit />,
+                    tooltip: "Editar Linha",
+                    onClick: () => {
+                      setAtividadeUpload(rowData);
+                      setModalAtualizar(true);
+                    },
+                  },
               ]}
               busca="Busca por usuário, título, treino ou criação"
               handleDetails={(obj) => (
