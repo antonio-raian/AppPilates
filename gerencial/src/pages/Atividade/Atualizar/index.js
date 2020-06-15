@@ -17,8 +17,6 @@ import {
 } from "@material-ui/core";
 import { Close, Add, Delete } from "@material-ui/icons";
 import { post } from "../../../services/Requests";
-import { ButtonSuccess } from "../styled";
-import TableComponent from "../../../components/TableComponent";
 
 const errors = [
   "Usuário não selecionado", //0
@@ -35,13 +33,10 @@ const colunas = [
 ];
 
 const Novo = (props) => {
-  const { open, setOpen, refresh } = props;
+  const { open, setOpen, refresh, item } = props;
   const [treinos, setTreinos] = useState([]);
   const [usuarios, setUsuarios] = useState([]);
   const [atividade, setAtividade] = useState({});
-  const [treino, setTreino] = useState("");
-  const [atvTreinos, setAtvTreinos] = useState([]);
-  const [showTreinos, setShowTreinos] = useState([]);
 
   const [error, setError] = useState(errors[0]);
 
@@ -50,7 +45,12 @@ const Novo = (props) => {
   }, [open]);
 
   const _handleLoad = () => {
-    setAtividade({ data_treino: moment().format("YYYY-MM-DD") });
+    console.log("ITEM", item);
+    setAtividade({
+      ...item,
+      realizado: item.realizado === "Não" ? false : true,
+    });
+
     post("/treino/busca", {})
       .then((res) => {
         if (res) {
@@ -77,7 +77,7 @@ const Novo = (props) => {
   };
 
   const _handleSubmit = () => {
-    post("/usuario/atividade/nova", { atividade, treinos: atvTreinos })
+    post("/usuario/atividade/altera", { atividade })
       .then((res) => {
         if (res) {
           console.log("Resposta", res);
@@ -88,39 +88,9 @@ const Novo = (props) => {
   };
 
   const _handleClose = () => {
-    setShowTreinos([]);
-    setAtvTreinos([]);
     setAtividade({});
     setOpen(false);
     refresh();
-  };
-
-  const _handleAdd = () => {
-    const dados = JSON.parse(treino);
-    console.log("Chegou aq", treino);
-    let aux = atvTreinos.slice();
-    aux.push(dados.id);
-    setAtvTreinos(aux);
-
-    aux = showTreinos.slice();
-    aux.push(dados);
-    setShowTreinos(aux);
-    setTreino("");
-  };
-
-  const _handleDelete = (treino) => {
-    const aux = [];
-    //deleta do show
-    showTreinos.map((tre) => {
-      if (tre.id != treino.id) aux.push(tre);
-    });
-    console.log("AUX", aux);
-
-    setShowTreinos(aux);
-
-    atvTreinos.map((tre) => {
-      if (tre != treino.id) aux.push(tre);
-    });
   };
 
   return (
@@ -159,6 +129,7 @@ const Novo = (props) => {
                     variant="outlined"
                     color="secondary"
                     style={{ width: "95%" }}
+                    value={atividade.usuario_id}
                     select
                     onChange={(e) => {
                       setAtividade({
@@ -169,7 +140,6 @@ const Novo = (props) => {
                       if (!atividade.dificuldade_esperada)
                         return setError(errors[2]);
                       if (!atividade.data_treino) return setError(errors[3]);
-                      if (showTreinos.length <= 0) return setError(errors[4]);
                     }}
                   >
                     {usuarios.map((element) => (
@@ -201,6 +171,7 @@ const Novo = (props) => {
                       variant="outlined"
                       color="secondary"
                       inputProps={{ min: 1 }}
+                      value={atividade.titulo}
                       style={{ width: "100%" }}
                       onChange={(e) => {
                         setAtividade({
@@ -211,7 +182,6 @@ const Novo = (props) => {
                         if (!atividade.dificuldade_esperada)
                           return setError(errors[2]);
                         if (!atividade.data_treino) return setError(errors[3]);
-                        if (showTreinos.length <= 0) return setError(errors[4]);
                       }}
                     />
                   </Grid>
@@ -233,6 +203,7 @@ const Novo = (props) => {
                       type="number"
                       inputProps={{ min: 0, max: 10 }}
                       style={{ width: "98%" }}
+                      value={atividade.dificuldade_esperada}
                       onChange={(e) => {
                         setAtividade({
                           ...atividade,
@@ -241,7 +212,6 @@ const Novo = (props) => {
                         if (!atividade.usuario_id) return setError(errors[0]);
                         if (!atividade.titulo) return setError(errors[1]);
                         if (!atividade.data_treino) return setError(errors[3]);
-                        if (showTreinos.length <= 0) return setError(errors[4]);
                       }}
                     />
                   </Grid>
@@ -251,7 +221,6 @@ const Novo = (props) => {
                     <TextField
                       id="data_treino"
                       label="Data do Treino"
-                      value={atividade.data_treino}
                       variant="outlined"
                       color="secondary"
                       format="DD/MM/YYYY"
@@ -266,84 +235,10 @@ const Novo = (props) => {
                         if (!atividade.titulo) return setError(errors[1]);
                         if (!atividade.dificuldade_esperada)
                           return setError(errors[2]);
-                        if (showTreinos.length <= 0) return setError(errors[4]);
                       }}
                     />
                   </Grid>
                 </Tooltip>
-              </Grid>
-            </Grid>
-
-            <Typography variant="h3" style={{ paddingBottom: 10 }}>
-              Treinos
-            </Typography>
-            {/* Treinos */}
-            <Grid container direction="row" style={{ paddingBottom: 10 }}>
-              <Tooltip title="Treino" placement="top-start">
-                <Grid item xs={11}>
-                  <TextField
-                    id="treino"
-                    label="Treino"
-                    variant="outlined"
-                    color="secondary"
-                    style={{ width: "98%" }}
-                    value={treino}
-                    select
-                    onChange={(e) => {
-                      setTreino(e.target.value);
-                      if (!atividade.usuario_id) return setError(errors[0]);
-                      if (!atividade.titulo) return setError(errors[1]);
-                      if (!atividade.dificuldade_esperada)
-                        return setError(errors[2]);
-                      if (!atividade.data_treino) return setError(errors[3]);
-                      if (showTreinos.length <= 0) return setError(errors[4]);
-                    }}
-                  >
-                    {treinos.map((element) => (
-                      <MenuItem
-                        key={element.id}
-                        value={JSON.stringify(element)}
-                      >
-                        {element.exercicio.nome} -> R:{element.repeticoes} S:
-                        {element.qtd_series} I:{element.intervalo}s
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                </Grid>
-              </Tooltip>
-              <Tooltip
-                title="Adcionar Treino nessa atividade"
-                placement="top-start"
-              >
-                <Grid item xs={1}>
-                  <ButtonSuccess
-                    fullWidth
-                    disabled={!treino}
-                    style={{ height: "100%" }}
-                    color="primary"
-                    onClick={() => {
-                      _handleAdd();
-                    }}
-                  >
-                    <Add />
-                  </ButtonSuccess>
-                </Grid>
-              </Tooltip>
-              <Grid item xs={12} md={12} lg={12}>
-                <TableComponent
-                  columns={colunas}
-                  data={showTreinos}
-                  handleDetails={() => {}}
-                  actions={[
-                    (rowData) => ({
-                      icon: () => <Delete />,
-                      tooltip: "Remover Linha",
-                      onClick: () => {
-                        _handleDelete(rowData);
-                      },
-                    }),
-                  ]}
-                />
               </Grid>
             </Grid>
           </Grid>
@@ -357,8 +252,7 @@ const Novo = (props) => {
                   atividade.usuario_id &&
                   atividade.titulo &&
                   atividade.dificuldade_esperada &&
-                  atividade.data_treino &&
-                  atvTreinos.length > 0
+                  atividade.data_treino
                 )
               }
               variant="contained"

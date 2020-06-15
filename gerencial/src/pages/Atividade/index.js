@@ -8,6 +8,7 @@ import { ButtonSuccess } from "./styled";
 import Novo from "./Novo";
 import { post, remove } from "../../services/Requests";
 import Visualizar from "./Visualizar";
+import Atualizar from "./Atualizar";
 import Deletar from "../../components/Deletar";
 import { Edit, Delete } from "@material-ui/icons";
 
