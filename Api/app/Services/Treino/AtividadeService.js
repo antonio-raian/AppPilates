@@ -65,6 +65,9 @@ class AtividadeService {
       };
 
     atividade.usuario_id = novaAtividade.usuario_id || atividade.usuario_id;
+    atividade.titulo = novaAtividade.titulo || atividade.titulo;
+    atividade.dificuldade_esperada =
+      novaAtividade.dificuldade_esperada || atividade.dificuldade_esperada;
     atividade.data_treino = novaAtividade.data_treino || atividade.data_treino;
     atividade.data_realizado =
       novaAtividade.data_realizado || atividade.data_realizado;

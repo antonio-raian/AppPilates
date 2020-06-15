@@ -16,7 +16,7 @@ class AtividadeController {
       : await AtividadeService.read(busca);
   }
   async update({ request }) {
-    const atividade = request.all();
+    const { atividade, treinos } = request.all();
     if (await AtividadeService.update(atividade)) return atividade;
 
     throw {
