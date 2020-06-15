@@ -49,6 +49,7 @@ const Novo = (props) => {
     setAtividade({
       ...item,
       realizado: item.realizado === "Não" ? false : true,
+      data_treino: moment().format("YYYY-MM-DD"),
     });
 
     post("/treino/busca", {})
@@ -224,6 +225,7 @@ const Novo = (props) => {
                       variant="outlined"
                       color="secondary"
                       format="DD/MM/YYYY"
+                      value={atividade.data_treino}
                       type="date"
                       style={{ width: "100%" }}
                       onChange={(e) => {
