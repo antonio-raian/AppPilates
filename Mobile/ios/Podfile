@@ -54,6 +54,10 @@ target 'BrunaPilates' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pod 'RCTYouTube', :path => '../node_modules/react-native-youtube'
+
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
   target 'BrunaPilatesTests' do
     inherit! :complete
     # Pods for testing

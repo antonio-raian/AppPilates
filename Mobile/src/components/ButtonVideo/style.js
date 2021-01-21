@@ -16,11 +16,10 @@ export const IconContainer = styled.View`
   background-color: #c4302b
 `;
 
-export const ButtonVideo = styled.TouchableOpacity`
-  width: 40%
+export const Button = styled.TouchableOpacity`
+  width: 100%
+  height: 100%
   flexDirection: row
-  borderRadius: 10px
-  background-color: #FFF
 `;
 
 export const Title = styled.Text`

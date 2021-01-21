@@ -1,25 +1,32 @@
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
-import {secondaryColor, primaryColor, gray} from '../../utils/colors';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import {
+  secondaryColor,
+  primaryColor,
+  gray,
+  gray2,
+  gray3,
+} from '../../utils/colors';
 
 /*
 borderColor: #000
 borderWidth: 3px
 */
 
-export const Container = styled.ImageBackground.attrs({
-  // source: require('../../Assets/images/BackHome.jpg'),
-  imageStyle: {width: '100%', height: '100%'},
-})`
+export const Container = styled.View`
+  background-color: ${gray2}
   flex: 1
   alignItems: center
 `;
 
 export const ContainerButtons = styled.View`
-  width: 90%
+  width: 100%
   height: ${(props) => (props.today ? '95px' : '90px')}
+  background-color:${(props) => (props.num % 2 === 0 ? gray2 : gray3)}
   padding: 7px
   justifyContent: center
+  
   alignItems: center
 `;
 
@@ -47,18 +54,10 @@ export const MenuButton = styled.TouchableOpacity`
 `;
 
 export const ListButton = styled.TouchableOpacity`
-  width: 250px
+  width: 600px
   height: 100%
-  borderWidth: ${(props) => (props.realizado ? '10px' : '0px')}
   borderColor: ${primaryColor}
-  background-color: ${(props) =>
-    props.past
-      ? '#606060'
-      : props.realizado
-      ? gray
-      : props.forward
-      ? secondaryColor
-      : primaryColor}
+  flexDirection: row
   justifyContent: center
   alignItems: center
   padding: 10px
@@ -116,6 +115,20 @@ export const Lista = styled.View`
   paddingTop: 5px
 `;
 
+export const RightArrows = styled(Icon).attrs({
+  name: 'angle-double-right',
+  size: 20,
+})`
+  padding-left: 70px
+  color: ${(props) => (props.today ? primaryColor : gray)};
+`;
+
+export const Divider = styled.View`
+background-color:${(props) => (props.today ? primaryColor : gray)}
+width: 600px
+height: 3px
+`;
+
 export const ContentItem = styled.View`
   width: 100%;
 `;
@@ -158,7 +171,7 @@ export const Title = styled.Text`
   padding: 10px
   justifyContent: center
   alignItems: center
-  color: #fff
+  color: ${(props) => (props.today ? primaryColor : gray)}
 `;
 
 export const SubTitle = styled.Text`

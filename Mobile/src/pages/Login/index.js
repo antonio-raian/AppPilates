@@ -7,13 +7,13 @@ import {
   Submit,
   Form,
   Background,
-  Space,
   Link,
 } from './style';
 import AsyncStorage from '@react-native-community/async-storage';
 import {CommonActions} from '@react-navigation/native';
 import {Linking, Alert} from 'react-native';
 import api from '../../utils/api';
+import {isLoged} from '../../utils/validators';
 
 const Login = ({navigation}) => {
   const [user, setUser] = useState('');
@@ -23,6 +23,20 @@ const Login = ({navigation}) => {
   );
 
   useEffect(() => {
+    async function _checkToken() {
+      console.log('ENTROU NESSE COISO');
+      await isLoged().then((res) => {
+        if (res) {
+          navigation.dispatch(
+            CommonActions.reset({
+              index: 1,
+              routes: [{name: 'Home'}],
+            }),
+          );
+        }
+      });
+    }
+    _checkToken();
     async function _getUser() {
       const user = await AsyncStorage.getItem('user');
       const passwd = await AsyncStorage.getItem('password');

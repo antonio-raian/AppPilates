@@ -17,6 +17,8 @@ import {
   BoxRight,
   BoxLeft,
   Loading,
+  Divider,
+  RightArrows,
 } from './style';
 import {Dimensions, Alert, RefreshControl, StatusBar} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -28,7 +30,6 @@ import {CommonActions} from '@react-navigation/native';
 import api from '../../utils/api';
 import AsyncStorage from '@react-native-community/async-storage';
 import {primaryColor} from '../../utils/colors';
-import {View} from 'native-base';
 
 const Home = ({navigation}) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -75,47 +76,44 @@ const Home = ({navigation}) => {
   }, [refresh]);
 
   const _renderData = () => {
-    // let today = 0;
-    // let past = 0;
-    // let forward = 0;
     let x = 0;
     return items.map((d) => {
       x++;
       let today =
         moment().diff(d.data_treino, 'h') > 0 &&
         moment().diff(d.data_treino, 'h') < 24;
-      let past = moment().diff(d.data_treino, 'h') > 0 && !today;
       let forward = moment().diff(d.data_treino, 'h') < 0;
       if (today) {
         scroller.scrollTo({x: 0, y: screenHeight * x + 220, animated: true});
       }
-      return (
-        <ContainerButtons today={today}>
-          <ListButton
-            past={past}
-            forward={forward}
-            realizado={d.realizado}
-            onPress={() => {
-              console.log('<><><><><', d.realizado, today);
-              !d.realizado && today
-                ? navigation.navigate('Activity', {
-                    activity: JSON.stringify(d),
-                    token,
-                    today: moment(),
-                  })
-                : Alert.alert(
-                    'Treino indisponível',
-                    today
-                      ? 'Você já fez o treino de Hoje!'
-                      : 'Os treinos só ficam disponíveis no dia expecífico!',
-                  );
-            }}>
-            <Title>{`Treino ${moment(d.data_treino).format(
-              'DD MMM YYYY',
-            )}`}</Title>
-          </ListButton>
-        </ContainerButtons>
-      );
+      return (today && !d.realizado) || forward ? (
+        <>
+          <ContainerButtons num={x} today={today}>
+            <ListButton
+              forward={forward}
+              onPress={() => {
+                !d.realizado && today
+                  ? navigation.navigate('Activity', {
+                      activity: JSON.stringify(d),
+                      token,
+                      today: moment(),
+                    })
+                  : Alert.alert(
+                      'Treino indisponível',
+                      today
+                        ? 'Você já fez o treino de Hoje!'
+                        : 'Os treinos só ficam disponíveis no dia expecífico!',
+                    );
+              }}>
+              <Title today={today}>{`Treino ${moment(d.data_treino).format(
+                'DD MMM YYYY',
+              )}`}</Title>
+              <RightArrows today={today} />
+            </ListButton>
+          </ContainerButtons>
+          <Divider today={today} />
+        </>
+      ) : null;
     });
   };
   return (

@@ -7,6 +7,7 @@ import Auth from '../pages/Auth';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Activity from '../pages/Activity';
+import Video from '../pages/Video';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,15 @@ function Routes() {
         <Stack.Screen name="Auth" component={Auth} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Activity" component={Activity} />
+        <Stack.Screen
+          name="Video"
+          component={Video}
+          options={{
+            cardStyle: {
+              backgroundColor: 'transparent',
+            },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

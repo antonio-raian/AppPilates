@@ -1,29 +1,26 @@
-import React, {useCallback} from 'react';
-import {Linking, Alert} from 'react-native';
-import {Container, ButtonVideo, Title, IconContainer} from './style';
+import React from 'react';
+import {Button} from './style';
+import {ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-const ButtonLinking = ({url, label}) => {
-  const handlePress = useCallback(async () => {
-    const supported = await Linking.canOpenURL(url);
-
-    if (supported) {
-      await Linking.openURL(url);
-    } else {
-      Alert.alert(`Não foi possível abrir essa URL: ${url}`);
-    }
-  }, [url]);
-
+const ButtonVideo = (props) => {
+  const {openVideo, videoId} = props;
   return (
-    <Container>
-      <ButtonVideo onPress={handlePress}>
-        <IconContainer>
-          <Icon name="play" color="#fff" />
-        </IconContainer>
-        <Title>{label}</Title>
-      </ButtonVideo>
-    </Container>
+    <Button onPress={() => openVideo()}>
+      <ImageBackground
+        source={{
+          uri: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+        }}
+        style={{
+          width: '95%',
+          height: '100%',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Icon name="play" size={30} color="#000" style={{opacity: 0.6}} />
+      </ImageBackground>
+    </Button>
   );
 };
 
-export default ButtonLinking;
+export default ButtonVideo;

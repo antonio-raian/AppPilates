@@ -1,17 +1,21 @@
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 import {Dimensions} from 'react-native';
-import {primaryColor, secondaryColor} from '../../utils/colors';
+import {
+  primaryColor,
+  secondaryColor,
+  gray2,
+  gray3,
+  gray,
+} from '../../utils/colors';
 
 /*
 borderColor: #000
 borderWidth: 3px
 */
 
-export const Container = styled.ImageBackground.attrs({
-  // source: require('../../Assets/images/BackHome.jpg'),
-  imageStyle: {width: '100%', height: '100%'},
-})`
+export const Container = styled.View`
+  background-color: ${gray2}
   flex: 1
   alignItems: center
 `;
@@ -71,35 +75,6 @@ export const Lista = styled.View`
   paddingTop: 5px
   paddingBottom: 5px
 `;
-export const ContainerTreino = styled.View`
-  width: ${(Dimensions.get('window').width * 65) / 100}px
-  backgroundColor: #fff
-  borderColor: #000
-  borderWidth: 1px
-  padding: 5px
-`;
-
-export const Label = styled.Text`
-  fontSize: 15px
-  fontWeight: bold
-`;
-export const Title = styled.Text`
-  textAlign: center
-  fontSize: 30px
-  fontWeight: bold
-`;
-export const Descript = styled.Text`
-  width: 100%
-  paddingHorizontal: 15px
-  paddingBottom: 15px
-  textAlign: justify
-  fontSize: 15px
-`;
-export const Instuctions = styled.Text` 
-  textAlign: center
-  fontSize: 15px
-  fontWeight: bold
-`;
 
 //Botão finalizar
 export const BoxBtnEnd = styled.View`
@@ -110,18 +85,18 @@ export const BoxBtnEnd = styled.View`
 
 export const ButtonEnd = styled.TouchableOpacity`
   padding: 10px
-  width: 90%
+  width: 110%
   height: 100%
   alignItems: center
   justifyContent: center
-  borderRadius: 50px
-  background-color: #99FF99
+  background-color: ${primaryColor}
 `;
 
 export const LabelBtnEnd = styled.Text`
   textAlign: center
   fontSize: 25px
   fontWeight: bold
+  color: #fff
 `;
 
 //Botão Voltar
@@ -143,4 +118,10 @@ export const LabelBtnBack = styled.Text`
   color: #fff
   fontWeight: bold
   fontSize: 20px
+`;
+
+export const Divider = styled.View`
+background-color:${gray}
+width: 400px
+height: 3px
 `;
