@@ -1,6 +1,6 @@
 {
   "name": "Metodo_Integrado",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "private": true,
   "scripts": {
     "android": "npx react-native run-android",
@@ -33,7 +33,6 @@
     "react-native-vector-icons": "^6.6.0",
     "react-native-webview": "^10.2.3",
     "react-native-youtube": "^2.0.1",
-    "realm": "^5.0.3",
     "styled-components": "^5.1.0"
   },
   "devDependencies": {
